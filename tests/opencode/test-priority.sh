@@ -20,18 +20,18 @@ trap cleanup_test_env EXIT
 # Create same skill "priority-test" in all three locations with different markers
 echo "Setting up priority test fixtures..."
 
-# 1. Create in superpowers location (lowest priority)
-mkdir -p "$SUPERPOWERS_SKILLS_DIR/priority-test"
-cat > "$SUPERPOWERS_SKILLS_DIR/priority-test/SKILL.md" <<'EOF'
+# 1. Create in baspowers location (lowest priority)
+mkdir -p "$BASPOWERS_SKILLS_DIR/priority-test"
+cat > "$BASPOWERS_SKILLS_DIR/priority-test/SKILL.md" <<'EOF'
 ---
 name: priority-test
-description: Superpowers version of priority test skill
+description: Baspowers version of priority test skill
 ---
-# Priority Test Skill (Superpowers Version)
+# Priority Test Skill (Baspowers Version)
 
-This is the SUPERPOWERS version of the priority test skill.
+This is the BASPOWERS version of the priority test skill.
 
-PRIORITY_MARKER_SUPERPOWERS_VERSION
+PRIORITY_MARKER_BASPOWERS_VERSION
 EOF
 
 # 2. Create in personal location (medium priority)
@@ -68,10 +68,10 @@ echo "  Created priority-test skill in all three locations"
 echo ""
 echo "Test 1: Verifying test fixtures..."
 
-if [ -f "$SUPERPOWERS_SKILLS_DIR/priority-test/SKILL.md" ]; then
-    echo "  [PASS] Superpowers version exists"
+if [ -f "$BASPOWERS_SKILLS_DIR/priority-test/SKILL.md" ]; then
+    echo "  [PASS] Baspowers version exists"
 else
-    echo "  [FAIL] Superpowers version missing"
+    echo "  [FAIL] Baspowers version missing"
     exit 1
 fi
 
@@ -169,49 +169,49 @@ describe_priority_result() {
     fi
 }
 
-# Test 2: Document personal vs bundled superpowers priority
+# Test 2: Document personal vs bundled baspowers priority
 echo ""
-echo "Test 2: Documenting personal vs superpowers priority..."
+echo "Test 2: Documenting personal vs baspowers priority..."
 echo "  Running from outside project directory..."
 
 run_opencode output "$HOME" "Call the skill tool with name \"priority-test\". Show the exact content including any PRIORITY_MARKER text."
 describe_priority_result \
     "$output" \
     "PRIORITY_MARKER_PERSONAL_VERSION" \
-    "PRIORITY_MARKER_SUPERPOWERS_VERSION" \
+    "PRIORITY_MARKER_BASPOWERS_VERSION" \
     "Personal version loaded for duplicate native skill name" \
-    "Current OpenCode behavior loaded bundled superpowers version instead of personal version"
+    "Current OpenCode behavior loaded bundled baspowers version instead of personal version"
 
-# Test 3: Document project vs bundled superpowers priority
+# Test 3: Document project vs bundled baspowers priority
 echo ""
-echo "Test 3: Documenting project vs personal/superpowers priority..."
+echo "Test 3: Documenting project vs personal/baspowers priority..."
 echo "  Running from project directory..."
 
 run_opencode output "$TEST_HOME/test-project" "Call the skill tool with name \"priority-test\". Show the exact content including any PRIORITY_MARKER text."
 describe_priority_result \
     "$output" \
     "PRIORITY_MARKER_PROJECT_VERSION" \
-    "PRIORITY_MARKER_SUPERPOWERS_VERSION" \
+    "PRIORITY_MARKER_BASPOWERS_VERSION" \
     "Project version loaded for duplicate native skill name" \
-    "Current OpenCode behavior loaded bundled superpowers version instead of project version"
+    "Current OpenCode behavior loaded bundled baspowers version instead of project version"
 
-# Test 4: Test a non-colliding bundled superpowers skill is still available
+# Test 4: Test a non-colliding bundled baspowers skill is still available
 echo ""
-echo "Test 4: Testing non-colliding superpowers skill remains available..."
+echo "Test 4: Testing non-colliding baspowers skill remains available..."
 
-mkdir -p "$SUPERPOWERS_SKILLS_DIR/superpowers-only-test"
-cat > "$SUPERPOWERS_SKILLS_DIR/superpowers-only-test/SKILL.md" <<'EOF'
+mkdir -p "$BASPOWERS_SKILLS_DIR/baspowers-only-test"
+cat > "$BASPOWERS_SKILLS_DIR/baspowers-only-test/SKILL.md" <<'EOF'
 ---
-name: superpowers-only-test
-description: Superpowers-only priority test skill
+name: baspowers-only-test
+description: Baspowers-only priority test skill
 ---
-# Superpowers Only Test Skill
+# Baspowers Only Test Skill
 
-PRIORITY_MARKER_SUPERPOWERS_ONLY_VERSION
+PRIORITY_MARKER_BASPOWERS_ONLY_VERSION
 EOF
 
-run_opencode output "$TEST_HOME/test-project" "Call the skill tool with name \"superpowers-only-test\". Show the exact content including any PRIORITY_MARKER text."
-assert_contains "$output" "PRIORITY_MARKER_SUPERPOWERS_ONLY_VERSION" "Non-colliding superpowers skill is still registered"
+run_opencode output "$TEST_HOME/test-project" "Call the skill tool with name \"baspowers-only-test\". Show the exact content including any PRIORITY_MARKER text."
+assert_contains "$output" "PRIORITY_MARKER_BASPOWERS_ONLY_VERSION" "Non-colliding baspowers skill is still registered"
 
 echo ""
 echo "=== All priority tests passed ==="

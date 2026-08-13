@@ -23,7 +23,7 @@ Cheap reversible choices do not qualify. Decide those yourself.
 ## Stopping Rules
 
 - **One consultation per decision.** Decide after one reply. No rebuttal round.
-- If `SUPERPOWERS_CONSULT_DEPTH` is already set, you are the consultant. Never consult again.
+- If `BASPOWERS_CONSULT_DEPTH` is already set, you are the consultant. Never consult again.
 - Advice never grants permission for destructive, irreversible, security-sensitive, or external actions.
 - Bound the call to 300 seconds. Failure, timeout, or empty output means decide from existing evidence.
 - If two decisions in one task already needed consultation, a third indicates an under-specified task. Ask your human partner.
@@ -45,12 +45,12 @@ does not create a task file:
 
 ```bash
 # Codex -> Claude
-SUPERPOWERS_CONSULT_DEPTH=1 timeout 300 \
+BASPOWERS_CONSULT_DEPTH=1 timeout 300 \
   agent-cli dev run . claude -p --output-format text \
   --permission-mode plan "$(<.claude/consultations/question.md)"
 
 # Claude -> Codex
-SUPERPOWERS_CONSULT_DEPTH=1 timeout 300 \
+BASPOWERS_CONSULT_DEPTH=1 timeout 300 \
   agent-cli dev run . codex exec --sandbox read-only --color never \
   "$(<.claude/consultations/question.md)"
 ```

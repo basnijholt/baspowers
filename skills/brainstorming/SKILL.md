@@ -90,7 +90,7 @@ your path and complete them in order.
 3. **Resolve ambiguity** — inspect first; ask one question only when the answer cannot be inferred safely
 4. **Propose 2-3 approaches** — with trade-offs and your recommendation
 5. **Select and present design** — in sections scaled to their complexity
-6. **Write design doc** — save to `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md` and commit
+6. **Write design doc** — save to `docs/baspowers/specs/YYYY-MM-DD-<topic>-design.md` and commit
 7. **Spec self-review** — quick inline check for placeholders, contradictions, ambiguity, scope (see below)
 8. **Transition to implementation** — invoke writing-plans skill to create implementation plan
 
@@ -184,7 +184,7 @@ is the whole process.
 
 **Documentation:**
 
-- Write the validated design (spec) to `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md`
+- Write the validated design (spec) to `docs/baspowers/specs/YYYY-MM-DD-<topic>-design.md`
   - (User preferences for spec location override this default)
 - Use elements-of-style:writing-clearly-and-concisely skill if available
 - Commit the design document to git

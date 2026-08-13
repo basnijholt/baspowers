@@ -25,15 +25,15 @@ reject_text() {
 }
 
 # Bootstrap stays strict: autonomy is useful only when relevant skills load.
-require_text skills/using-superpowers/SKILL.md 'Invoke relevant or requested skills BEFORE any response or action'
+require_text skills/using-baspowers/SKILL.md 'Invoke relevant or requested skills BEFORE any response or action'
 
 # Routine workflow decisions belong to the agent.
-require_text skills/using-superpowers/SKILL.md 'Decide and proceed autonomously'
-require_text skills/using-superpowers/SKILL.md 'consulting-cross-model'
+require_text skills/using-baspowers/SKILL.md 'Decide and proceed autonomously'
+require_text skills/using-baspowers/SKILL.md 'consulting-cross-model'
 require_text skills/consulting-cross-model/SKILL.md 'Codex.*Claude|Claude.*Codex'
 require_text skills/consulting-cross-model/SKILL.md 'agent-cli dev agent'
 require_text skills/consulting-cross-model/SKILL.md 'One consultation per decision'
-require_text skills/consulting-cross-model/SKILL.md 'SUPERPOWERS_CONSULT_DEPTH'
+require_text skills/consulting-cross-model/SKILL.md 'BASPOWERS_CONSULT_DEPTH'
 require_text skills/consulting-cross-model/SKILL.md 'read-only|permission-mode plan'
 require_text skills/consulting-cross-model/SKILL.md 'advisory|not an authorization|never authoriz'
 reject_text skills/brainstorming/SKILL.md 'human partner.*approv|user approv|Get approval|STOP and wait for an explicit yes|Wait for the user'
@@ -52,7 +52,7 @@ require_text skills/systematic-debugging/SKILL.md 'consulting-cross-model'
 require_text skills/receiving-code-review/SKILL.md 'consulting-cross-model'
 
 # External and destructive actions still require authority when not already requested.
-require_text skills/using-superpowers/SKILL.md 'destructive|irreversible'
-require_text skills/using-superpowers/SKILL.md 'external action|external side effect|publish|deploy|merge'
+require_text skills/using-baspowers/SKILL.md 'destructive|irreversible'
+require_text skills/using-baspowers/SKILL.md 'external action|external side effect|publish|deploy|merge'
 
 exit "$failures"

@@ -1,9 +1,9 @@
 {
-  "name": "superpowers",
+  "name": "baspowers",
   "version": "6.3.0",
-  "description": "Superpowers skills and runtime bootstrap for coding agents",
+  "description": "Baspowers skills and runtime bootstrap for coding agents",
   "type": "module",
-  "main": ".opencode/plugins/superpowers.js",
+  "main": ".opencode/plugins/baspowers.js",
   "keywords": [
     "pi-package",
     "skills",
@@ -14,7 +14,7 @@
   ],
   "pi": {
     "extensions": [
-      "./.pi/extensions/superpowers.ts"
+      "./.pi/extensions/baspowers.ts"
     ],
     "skills": [
       "./skills"
