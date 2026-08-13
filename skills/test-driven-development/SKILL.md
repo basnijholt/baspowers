@@ -21,10 +21,14 @@ Write the test first. Watch it fail. Write minimal code to pass.
 - Refactoring
 - Behavior changes
 
-**Exceptions (ask your human partner):**
+**Agent-decided exceptions:**
 - Throwaway prototypes
 - Generated code
 - Configuration files
+
+Classify these yourself. State the exception and use the strongest practical
+verification available. Ask only when skipping TDD would materially reduce
+confidence in an ambiguous or high-risk change.
 
 Thinking "skip TDD just this once"? Stop. That's rationalization.
 
@@ -299,7 +303,7 @@ Can't check all boxes? You skipped TDD. Start over.
 
 | Problem | Solution |
 |---------|----------|
-| Don't know how to test | Write wished-for API. Write assertion first. Ask your human partner. |
+| Don't know how to test | Write wished-for API and assertion first. Inspect neighboring tests. Simplify the interface. Ask only if a product decision is missing. |
 | Test too complicated | Design too complicated. Simplify interface. |
 | Must mock everything | Code too coupled. Use dependency injection. |
 | Test setup huge | Extract helpers. Still complex? Simplify design. |
@@ -317,4 +321,5 @@ Production code → test exists and failed first
 Otherwise → not TDD
 ```
 
-No exceptions without your human partner's permission.
+Exceptions must match the named categories above and include explicit
+verification. Otherwise use TDD.

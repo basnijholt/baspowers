@@ -207,7 +207,10 @@ You MUST complete each phase before proceeding to the next.
    - Are we "sticking with it through sheer inertia"?
    - Should we refactor architecture vs. continue fixing symptoms?
 
-   **Discuss with your human partner before attempting more fixes**
+   **Use superpowers:consulting-cross-model before attempting more fixes.**
+   Give the adviser the symptom, evidence, and three failed hypotheses.
+   Escalate to your human partner only if no sound technical path remains or
+   the next step requires authority you do not have.
 
    This is NOT a failed hypothesis - this is a wrong architecture.
 

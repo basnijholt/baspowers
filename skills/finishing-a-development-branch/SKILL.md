@@ -7,7 +7,7 @@ description: Use when implementation is complete, all tests pass, and you need t
 
 ## Overview
 
-**Core principle:** Verify tests → Detect environment → Present options → Execute choice → Clean up.
+**Core principle:** Verify tests → Detect environment → Follow requested outcome → Clean up safely.
 
 **Announce at start:** "I'm using the finishing-a-development-branch skill to complete this work."
 
@@ -35,51 +35,37 @@ GIT_COMMON=$(cd "$(git rev-parse --git-common-dir)" 2>/dev/null && pwd -P)
 WORKTREE_PATH=$(git rev-parse --show-toplevel)
 ```
 
-This determines which menu to show and how cleanup works:
+This determines which integration actions are available and how cleanup works:
 
-| State | Menu | Cleanup |
+| State | Available integration | Cleanup |
 |-------|------|---------|
-| `GIT_DIR == GIT_COMMON` (normal repo) | Standard 3 options | No worktree to clean up |
-| `GIT_DIR != GIT_COMMON`, named branch | Standard 3 options | Provenance-based (see Step 6) |
-| `GIT_DIR != GIT_COMMON`, detached HEAD | Reduced 2 options (no merge) | Externally managed — leave in place |
+| `GIT_DIR == GIT_COMMON` (normal repo) | merge, PR, or keep | No worktree to clean up |
+| `GIT_DIR != GIT_COMMON`, named branch | merge, PR, or keep | Provenance-based (see Step 6) |
+| `GIT_DIR != GIT_COMMON`, detached HEAD | PR or keep (no local merge) | Externally managed — leave in place |
 
 ## Step 3: Determine Base Branch
 
 The base branch is whatever this work forked from — usually named in the
 plan, the conversation, or the branch's upstream. If it is not already
-known, ask: "This branch split from <your best guess> - is that correct?"
-Confirm before merging: merging into the wrong base is expensive to undo.
+known, derive it from merge-base, upstream tracking, and repository defaults.
+If those disagree, stop before merging or opening a PR and report the
+ambiguity: integrating into the wrong base is expensive to undo.
 
-## Step 4: Present Options
+## Step 4: Select Requested Integration
 
-**Normal repo and named-branch worktree — present exactly these 3 options:**
+Follow the requested outcome already present in the task or repository
+instructions:
 
-```
-Implementation complete. What would you like to do?
+- If the request includes opening a PR, push and create the PR.
+- If the request includes local integration, merge locally.
+- If no integration side effect was requested, keep the branch and worktree,
+  report their state, and stop. Do not turn completion into a permission menu.
+- A detached HEAD cannot merge locally; when local integration was requested,
+  create a named branch and report the constraint before any external action.
 
-1. Merge back to <base-branch> locally
-2. Push and create a Pull Request
-3. Keep the branch as-is (I'll handle it later)
-
-Which option?
-```
-
-**Detached HEAD — present exactly these 2 options:**
-
-```
-Implementation complete. You're on a detached HEAD (externally managed workspace).
-
-1. Push as new branch and create a Pull Request
-2. Keep as-is (I'll handle it later)
-
-Which option?
-```
-
-Present the menu exactly as written — concise, with every option coming
-from the list above. Discarding the work happens only in response to your
-human partner explicitly asking for it (see "If your human partner asks to
-discard the work" below). Wait for their answer; the integration decision
-is theirs.
+Publishing, merging, or deleting work without that outcome being requested
+requires new authority. Preserve the branch instead of asking a routine
+completion question.
 
 ## Step 5: Execute Choice
 
@@ -158,7 +144,7 @@ git branch -D <feature-branch>
 
 ## Step 6: Cleanup Workspace
 
-**Runs for Option 1 and confirmed discards.** Options 2 and 3 always
+**Runs for local merge and confirmed discards.** PR and keep outcomes always
 preserve the worktree. Both callers have already changed directory to the
 main repo root — worktree removal must run from outside the worktree —
 and use the `GIT_DIR`/`GIT_COMMON`/`WORKTREE_PATH` values captured in
@@ -177,7 +163,7 @@ git worktree prune  # Self-healing: clean up any stale registrations
 **If removal is refused** (`contains modified or untracked files`): the
 worktree holds files that exist nowhere else — uncommitted plans, notes,
 or scratch work. Never `--force` on your own initiative. Show your human
-partner what is at stake and ask:
+partner what is at stake, preserve the worktree, and stop:
 
 ```bash
 git -C "$WORKTREE_PATH" status --porcelain -uall
@@ -188,14 +174,11 @@ Worktree removal refused — these files were never committed:
 
 <file list>
 
-1. Commit them to <branch> before cleanup
-2. Move them into <main repo root>
-3. Delete them (unrecoverable)
-
-Which?
+Cleanup paused. Tell me whether these files should be committed, moved, or
+deleted.
 ```
 
-Carry out the choice, then remove the worktree.
+Carry out a later explicit instruction, then remove the worktree.
 
 **Otherwise:** The host environment owns this workspace — leave it in
 place. If your platform provides a workspace-exit tool, use it.
@@ -214,12 +197,12 @@ place. If your platform provides a workspace-exit tool, use it.
 | Excuse | Reality |
 |--------|---------|
 | "Tests passed earlier this session" | Run the suite on the tree you are about to integrate. A green run only proves the tree it ran on. |
-| "They obviously want it merged" | Integration is your human partner's decision. Present the menu and wait. |
-| "They seem done with this feature — I'll offer to discard it" | The menu is complete as written. Discard happens only when your human partner asks for it in so many words. |
+| "They obviously want it merged" | Merge only when local integration is part of the requested outcome; otherwise preserve the branch. |
+| "They seem done with this feature — I'll offer to discard it" | Discard happens only when your human partner asks for it in so many words. |
 | "'Yeah, get rid of it' counts as confirmation" | Only the typed word `discard` authorizes deletion. |
 | "The PR is up, so the worktree is clutter now" | PR feedback gets fixed in that worktree. It stays until the work lands. |
 | "This other worktree looks stale — I'll clean it too" | Clean up only worktrees under `.worktrees/` or `worktrees/`. Everything else belongs to the host. |
-| "Removal refused — `--force` is just finishing the cleanup" | The refusal means files exist only in that worktree. `--force` destroys them permanently. Show your human partner and ask. |
+| "Removal refused — `--force` is just finishing the cleanup" | The refusal means files exist only in that worktree. `--force` destroys them permanently. Preserve the worktree and report. |
 | "The merged-result failure is probably flaky" | A failing merged result stops everything. Branch and worktree stay put while you investigate. |
-| "The base branch is obviously main" | Confirm the fork point or ask. Merging into the wrong base is expensive to undo. |
+| "The base branch is obviously main" | Derive the fork point and compare it with upstream/default branch evidence. Stop if they disagree. |
 | "The push was rejected — force-push will fix it" | A rejected push means the remote moved. Investigate; force-push only on your human partner's explicit request. |

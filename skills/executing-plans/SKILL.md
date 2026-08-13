@@ -19,8 +19,9 @@ Load plan, review critically, execute all tasks, report when complete.
 1. Ensure an isolated workspace: use superpowers:using-git-worktrees to create one or verify the existing one
 2. Read plan file
 3. Review critically - identify any questions or concerns about the plan
-4. If concerns: Raise them with your human partner before starting
-5. If no concerns: Create todos for the plan items and proceed
+4. Resolve concerns from available context; correct the plan when the intended result is clear
+5. Ask only when a concern requires a missing product decision, material scope expansion, or new authority
+6. Create todos for the plan items and proceed
 
 ### Step 2: Execute Tasks
 
@@ -45,7 +46,8 @@ After all tasks complete and verified:
 - You don't understand an instruction
 - Verification fails repeatedly
 
-**Ask for clarification rather than guessing.**
+Use the safest reasonable assumption for reversible in-scope work and record it.
+Ask only when no safe assumption exists or new authority is required.
 
 ## When to Revisit Earlier Steps
 
@@ -60,5 +62,5 @@ After all tasks complete and verified:
 - Follow plan steps exactly
 - Don't skip verifications
 - Reference skills when plan says to
-- Stop when blocked, don't guess
-- Never start implementation on main/master branch without explicit user consent
+- Stop only for a genuine blocker, missing authority, or repeatedly failing verification
+- Never implement directly on main/master; create or enter an isolated branch/worktree automatically

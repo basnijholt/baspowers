@@ -23,6 +23,23 @@ This is not negotiable. You cannot rationalize your way out of this.
 
 Then announce "Using [skill] to [purpose]" and follow the skill exactly. If it has a checklist, create a todo per item.
 
+## Autonomy and Authority
+
+**Decide and proceed autonomously for routine, reversible, in-scope work.**
+Do not turn workflow checkpoints into permission requests. Make reasonable
+assumptions, record important decisions, self-review plans and designs, and
+continue through implementation and verification.
+
+Ask your human partner only when progress requires information you cannot
+discover safely, a material expansion of scope, or new authority for a
+destructive or irreversible action. External actions such as publishing,
+deploying, merging, spending money, or messaging others require authorization
+unless the request already clearly includes that side effect.
+
+When a hard technical decision remains ambiguous after inspecting the code,
+tests, and history, use **superpowers:consulting-cross-model** before
+interrupting your human partner. Consultation is advice, never authority.
+
 ## Skill Priority
 
 When multiple skills apply, process skills come first — they set the approach, then implementation skills (frontend-design, etc.) carry it out. Brainstorming and systematic-debugging are Superpowers' most common process skills, but the rule holds for any of them.

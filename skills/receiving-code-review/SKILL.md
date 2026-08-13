@@ -77,9 +77,12 @@ IF suggestion seems wrong:
   Push back with technical reasoning
 
 IF can't easily verify:
-  Say so: "I can't verify this without [X]. Should I [investigate/ask/proceed]?"
+  Investigate the cheapest reliable way and record what remains unverified
 
-IF conflicts with your human partner's prior decisions:
+IF conflicts with a decision recorded in the codebase:
+  Use superpowers:consulting-cross-model on the technical merits, then decide and record it
+
+IF conflicts with a decision your human partner stated directly:
   Stop and discuss with your human partner first
 ```
 
