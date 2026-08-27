@@ -1,27 +1,42 @@
 ---
 name: using-baspowers
-description: Use when starting any conversation - establishes how to find and use skills, requiring skill invocation before ANY response including clarifying questions
+description: Use when starting a new conversation or task, or when the task changes enough that different skills may apply
 ---
 
 <SUBAGENT-STOP>
 If you were dispatched as a subagent to execute a specific task, ignore this skill.
 </SUBAGENT-STOP>
 
-<EXTREMELY-IMPORTANT>
-If you think there is even a 1% chance a skill might apply to what you are doing, you ABSOLUTELY MUST invoke the skill.
+<IMPORTANT>
+At the start of each new task, determine which available skills apply. If a
+skill applies, use it before substantive work begins.
 
-IF A SKILL APPLIES TO YOUR TASK, YOU DO NOT HAVE A CHOICE. YOU MUST USE IT.
-
-This is not negotiable. You cannot rationalize your way out of this.
-</EXTREMELY-IMPORTANT>
+Bootstrap once per task, not once per message or tool call.
+</IMPORTANT>
 
 ## The Rule
 
-**Invoke relevant or requested skills BEFORE any response or action** — including clarifying questions, exploring the codebase, or checking files. If it turns out wrong for the situation, you don't have to use it.
+At the **start of each new task**, invoke relevant or requested skills before
+the first substantive response or action. A task continues through follow-up
+questions, status checks, corrections, and its tool calls.
+
+**Do not re-read or re-invoke** the same skill on every turn. When its contents
+are already available in the current context, keep applying them directly.
+Re-check skills only when:
+
+- your human partner starts a materially different task;
+- a new requirement makes another skill relevant;
+- context compaction or another reset removed the instructions; or
+- you know the skill file changed.
+
+Do not run a shell command merely to prove that a skill was invoked. Use the
+runtime's skill mechanism when available; otherwise read a needed skill once.
 
 **Before entering plan mode:** if you haven't already brainstormed, invoke the brainstorming skill first.
 
-Then announce "Using [skill] to [purpose]" and follow the skill exactly. If it has a checklist, create a todo per item.
+Announce "Using [skill] to [purpose]" the first time it is selected for a task,
+or when it materially changes the workflow. Follow the skill exactly. If it
+has a checklist, create a todo per item.
 
 ## Autonomy and Authority
 
@@ -59,7 +74,7 @@ These thoughts mean STOP—you're rationalizing:
 | "I can check git/files quickly" | Files lack conversation context. Check for skills. |
 | "Let me gather information first" | Skills tell you HOW to gather information. |
 | "This doesn't need a formal skill" | If a skill exists, use it. |
-| "I remember this skill" | Skills evolve. Read current version. |
+| "I remember this skill" | If it is not in current context, read it. If it is already loaded, apply it without another filesystem read. |
 | "This doesn't count as a task" | Action = task. Check for skills. |
 | "The skill is overkill" | Simple things become complex. Use it. |
 | "I'll just do this one thing first" | Check BEFORE doing anything. |
