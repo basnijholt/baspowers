@@ -28,7 +28,12 @@ reject_text() {
 require_text skills/using-baspowers/SKILL.md 'start of each new task'
 require_text skills/using-baspowers/SKILL.md 'Do not re-read or re-invoke'
 require_text skills/using-baspowers/SKILL.md 'already available in the current context'
-reject_text skills/using-baspowers/SKILL.md 'BEFORE any response or action|before ANY response'
+require_text skills/using-baspowers/SKILL.md 'materially different task'
+require_text skills/using-baspowers/SKILL.md 'new requirement makes another skill relevant'
+require_text skills/using-baspowers/SKILL.md 'context compaction or another reset removed the instructions'
+require_text skills/using-baspowers/SKILL.md 'skill file changed'
+require_text skills/using-baspowers/SKILL.md 'Do not run a shell command merely to prove'
+reject_text skills/using-baspowers/SKILL.md 'before every response or action'
 
 # Routine workflow decisions belong to the agent.
 require_text skills/using-baspowers/SKILL.md 'Decide and proceed autonomously'
