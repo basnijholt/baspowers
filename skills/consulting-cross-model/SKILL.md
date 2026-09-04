@@ -43,15 +43,28 @@ output. Keep it git-ignored.
 Prefer synchronous `agent-cli dev run`; it returns the answer directly and
 does not create a task file:
 
+Non-login shells can omit user-level executable directories. Before reporting
+a CLI unavailable, resolve it from `PATH`, then check
+`$HOME/.local/bin/agent-cli` and `$HOME/.bun/bin/{claude,codex}`. Pass `--`
+after the worktree name so `agent-cli` does not parse the nested CLI's flags.
+
 ```bash
 # Codex -> Claude
+consult_agent_cli=$(command -v agent-cli || printf '%s\n' "$HOME/.local/bin/agent-cli")
+consult_claude_cli=$(command -v claude || printf '%s\n' "$HOME/.bun/bin/claude")
+[ -x "$consult_agent_cli" ] && [ -x "$consult_claude_cli" ] || exit 127
 BASPOWERS_CONSULT_DEPTH=1 timeout 300 \
-  agent-cli dev run . claude -p --output-format text \
+  "$consult_agent_cli" dev run . -- "$consult_claude_cli" \
+  -p --output-format text \
   --permission-mode plan "$(<.claude/consultations/question.md)"
 
 # Claude -> Codex
+consult_agent_cli=$(command -v agent-cli || printf '%s\n' "$HOME/.local/bin/agent-cli")
+consult_codex_cli=$(command -v codex || printf '%s\n' "$HOME/.bun/bin/codex")
+[ -x "$consult_agent_cli" ] && [ -x "$consult_codex_cli" ] || exit 127
 BASPOWERS_CONSULT_DEPTH=1 timeout 300 \
-  agent-cli dev run . codex exec --sandbox read-only --color never \
+  "$consult_agent_cli" dev run . -- "$consult_codex_cli" \
+  exec --sandbox read-only --color never \
   "$(<.claude/consultations/question.md)"
 ```
 
