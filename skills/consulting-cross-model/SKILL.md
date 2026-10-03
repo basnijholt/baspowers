@@ -49,6 +49,9 @@ Non-login shells can omit user-level executable directories. Before reporting
 a CLI unavailable, resolve it from `PATH`, then check
 `$HOME/.local/bin/agent-cli` and `$HOME/.bun/bin/{claude,codex}`. Pass `--`
 after the worktree name so `agent-cli` does not parse the nested CLI's flags.
+`codex exec` also reads stdin when it is not a terminal, so redirect it from
+`/dev/null`; a background shell's open stdin otherwise hangs it until the
+timeout.
 
 ```bash
 # Codex -> Claude
@@ -67,7 +70,7 @@ consult_codex_cli=$(command -v codex || printf '%s\n' "$HOME/.bun/bin/codex")
 BASPOWERS_CONSULT_DEPTH=1 timeout 300 \
   "$consult_agent_cli" dev run . -- "$consult_codex_cli" \
   exec -m gpt-6-astra --sandbox read-only --color never \
-  "$(<.claude/consultations/question.md)"
+  "$(<.claude/consultations/question.md)" < /dev/null
 ```
 
 When synchronous output is unavailable, use `agent-cli dev agent .` with the
