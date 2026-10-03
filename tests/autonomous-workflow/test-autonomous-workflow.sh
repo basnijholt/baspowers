@@ -44,6 +44,7 @@ require_text skills/consulting-cross-model/SKILL.md 'One consultation per decisi
 require_text skills/consulting-cross-model/SKILL.md 'BASPOWERS_CONSULT_DEPTH'
 require_text skills/consulting-cross-model/SKILL.md 'read-only|permission-mode plan'
 require_text skills/consulting-cross-model/SKILL.md 'advisory|not an authorization|never authoriz'
+require_text skills/consulting-cross-model/SKILL.md '^  "\$\(<\.claude/consultations/question\.md\)" < /dev/null$'
 reject_text skills/brainstorming/SKILL.md 'human partner.*approv|user approv|Get approval|STOP and wait for an explicit yes|Wait for the user'
 reject_text skills/brainstorming/SKILL.md 'Want me to\?|ask user to review'
 reject_text skills/writing-plans/SKILL.md 'Which approach\?'
