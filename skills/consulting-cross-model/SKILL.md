@@ -6,8 +6,10 @@ description: Use when a hard technical decision remains ambiguous after inspecti
 # Consulting the Opposite Model
 
 Use one independent model as an adviser, then own the decision yourself.
-Codex consults Claude; Claude consults Codex. Consultation is advisory, not an
-authorization and not a substitute for inspecting the repository.
+Codex consults Claude on Opus 5.5 (`claude-opus-5-5`); Claude consults Codex on
+GPT-6 Astra (`gpt-6-astra`). Pin these models in every call. Consultation is
+advisory, not an authorization and not a substitute for inspecting the
+repository.
 
 ## When to Consult
 
@@ -55,7 +57,7 @@ consult_claude_cli=$(command -v claude || printf '%s\n' "$HOME/.bun/bin/claude")
 [ -x "$consult_agent_cli" ] && [ -x "$consult_claude_cli" ] || exit 127
 BASPOWERS_CONSULT_DEPTH=1 timeout 300 \
   "$consult_agent_cli" dev run . -- "$consult_claude_cli" \
-  -p --output-format text \
+  -p --model claude-opus-5-5 --output-format text \
   --permission-mode plan "$(<.claude/consultations/question.md)"
 
 # Claude -> Codex
@@ -64,12 +66,13 @@ consult_codex_cli=$(command -v codex || printf '%s\n' "$HOME/.bun/bin/codex")
 [ -x "$consult_agent_cli" ] && [ -x "$consult_codex_cli" ] || exit 127
 BASPOWERS_CONSULT_DEPTH=1 timeout 300 \
   "$consult_agent_cli" dev run . -- "$consult_codex_cli" \
-  exec --sandbox read-only --color never \
+  exec -m gpt-6-astra --sandbox read-only --color never \
   "$(<.claude/consultations/question.md)"
 ```
 
 When synchronous output is unavailable, use `agent-cli dev agent .` with the
-opposite `--agent`, `--no-hooks`, `-m tmux`, and `--prompt-file`. Require a
+opposite `--agent`, the same model flag in `--agent-args`, `--no-hooks`,
+`-m tmux`, and `--prompt-file`. Require a
 unique report path. Remove generated `TASK-*` and consultation files after
 reading the report.
 
