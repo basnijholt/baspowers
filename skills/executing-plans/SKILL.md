@@ -196,7 +196,7 @@ read its output, and compare. Three outcomes:
 - **The plan is wrong** — a step contradicts the spec, an interface from an
   earlier task doesn't match what this task consumes, a command that
   cannot work. Rule on the smallest change that satisfies the spec, ledger
-  it as `Task <N>: Ruling: <finding> — <what you decided and why>`, and
+  it as `Task <N>: Ruling: <finding> — <what you decided and why> — <cost if wrong>`, and
   continue. The ruling is carried, not remembered: later tasks that touch
   the same interface read it from the ledger.
 
