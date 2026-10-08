@@ -11,7 +11,7 @@ Personal fork of [obra/superpowers](https://github.com/obra/superpowers): a set 
 Upstream is [obra/superpowers](https://github.com/obra/superpowers) v6.4.2 plus later bug fixes from its `dev` branch.
 Every upstream skill is renamed from superpowers to baspowers; that rename alone does not count as a change.
 
-### Original to Baspowers (7)
+### Original to Baspowers (6)
 
 | Skill | What it does |
 |---|---|
@@ -19,7 +19,6 @@ Every upstream skill is renamed from superpowers to baspowers; that rename alone
 | `merging-when-approved` | Merge only after independent reviewers approve the exact head |
 | `scoring-pull-requests` | Verdict-first scorecard: net production LOC, root cause or bandage, risk |
 | `stopping-runaway-prs` | Stop and re-plan when a change outgrows its estimate or reviews keep finding defects |
-| `rolling-out-releases` | One deployment PR, staging first, production in a quiet window |
 | `reporting-status` | Open items only, with how far each got |
 | `triaging-pr-backlogs` | Close what is provably redundant, merge what passes review, report the rest |
 
