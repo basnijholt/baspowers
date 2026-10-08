@@ -122,19 +122,13 @@ When NOT to use
 ## Core Pattern (for techniques/patterns)
 Before/after code comparison
 
-## Quick Reference
-Table or bullets for scanning common operations
-
 ## Implementation
 Inline code for simple patterns
 Link to file for heavy reference or reusable tools
-
-## Common Mistakes
-What goes wrong + fixes
-
-## Real-World Impact (optional)
-Concrete results
 ```
+
+Add a quick-reference table, common-mistakes list, or red flags only when
+testing shows agents need them, and never as a restatement of the steps.
 
 
 ## Skill Discovery Optimization (SDO)
@@ -481,8 +475,6 @@ Skills that enforce discipline (like TDD) need to resist rationalization. Agents
 
 **Scope:** this toolkit is for discipline failures — an agent that knows the rule and skips it under pressure. For wrong-shaped output or omitted elements, prohibition-based bulletproofing backfires; use the forms in Match the Form to the Failure instead.
 
-**Psychology note:** Understanding WHY persuasion techniques work helps you apply them systematically. See persuasion-principles.md for research foundation (Cialdini, 2021; Meincke et al., 2025) on authority, commitment, scarcity, social proof, and unity principles.
-
 ### Close Every Loophole Explicitly
 
 Don't just state the rule - forbid specific workarounds:
@@ -652,20 +644,17 @@ Deploying untested skills = deploying untested code. It's a violation of quality
 **REFACTOR Phase - Close Loopholes:**
 - [ ] Identify NEW rationalizations from testing
 - [ ] Add explicit counters (if discipline skill)
-- [ ] Build rationalization table from all test iterations
-- [ ] Create red flags list
+- [ ] Discipline skills only: build rationalization table and red flags from the excuses observed in testing
 - [ ] Re-test until bulletproof
 
 **Quality Checks:**
 - [ ] Small flowchart only if decision non-obvious
-- [ ] Quick reference table
-- [ ] Common mistakes section
+- [ ] No table or list that restates the steps
 - [ ] No narrative storytelling
 - [ ] Supporting files only for tools or heavy reference
 
 **Deployment:**
-- [ ] Commit skill to git and push to your fork (if configured)
-- [ ] Consider contributing back via PR (if broadly useful)
+- [ ] Commit skill to git
 
 ## Discovery Workflow
 
