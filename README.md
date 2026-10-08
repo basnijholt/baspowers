@@ -84,13 +84,14 @@ flowchart TD
 
 | Stage | Model | Calls | Tokens | Cost at list price |
 |---|---|---|---|---|
-| Map, including pilots | gpt-6-luna, high reasoning | 182 | 4.1M in, 0.74M out | ~$1.40 |
-| Cheap merge, discarded | gpt-6-luna, high reasoning | 18 | 0.52M in, 0.18M out | ~$0.30 |
+| Map, including pilots | gpt-6-luna, high reasoning | 182 | 4.1M in, 0.74M out | ~$0.62 |
+| Cheap merge, discarded | gpt-6-luna, high reasoning | 18 | 0.52M in, 0.18M out | ~$0.14 |
 | Clustering | Opus 5.5 | 5 subagents | ~0.87M | ~$5 |
 | A/B tests | Sonnet 5.5 | ~240 runs | ~1.6M in, ~0.3M out | ~$6 |
 
-That is about 8M tokens, or roughly $13 at API list prices, not counting the session that orchestrated it.
-Luna is priced at the `gpt-5.6-luna` rate because `gpt-6-luna` has no published price, and the clustering cost is an estimate because its input and output split was not logged.
+That is about 8M tokens, or roughly $12 at API list prices, not counting the session that orchestrated it.
+Luna is priced at $0.10 per 1M input and $0.50 per 1M output tokens, with 90% off cached input ([Artificial Analysis](https://artificialanalysis.ai/models/releases/gpt-6-luna)).
+The clustering cost is an estimate because its input and output split was not logged.
 I ran everything on existing subscriptions.
 
 ## Install
