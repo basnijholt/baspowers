@@ -671,6 +671,7 @@ Deploying untested skills = deploying untested code. It's a violation of quality
 
 **Deployment:**
 - [ ] Commit skill to git
+- [ ] Push it when the repository is one your human partner owns and maintains; otherwise leave pushing to them
 
 ## Discovery Workflow
 
