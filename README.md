@@ -7,9 +7,10 @@ It started as a fork of [obra/superpowers](https://github.com/obra/superpowers) 
 
 - most upstream skills are modified to let the agent decide routine work itself, and some are rewritten;
 - original skills, most of them mined from my own agent history and A/B tested (see [how they were made](#how-the-delivery-skills-were-made));
-- a terse response style adapted from [caveman](https://github.com/JuliusBrussee/caveman) and [i-have-adhd](https://github.com/ayghri/i-have-adhd), built into the bootstrap.
+- a terse response style adapted from [caveman](https://github.com/JuliusBrussee/caveman) and [i-have-adhd](https://github.com/ayghri/i-have-adhd), built into the bootstrap;
+- a `/wait-what` command from [mattpocock/skills](https://github.com/mattpocock/skills) for replies that did not land.
 
-See [Skills](#skills) for what is original, modified, or copied.
+See [Skills](#skills) for what is original, modified, copied, or adapted.
 
 - `skills/` — the skills
 - `hooks/` — Claude Code `SessionStart` hook that injects `using-baspowers`
@@ -57,6 +58,12 @@ Identical to upstream apart from the rename.
 | `verification-before-completion` | Run the checks before claiming anything works |
 | `requesting-code-review` | Get a review before merging |
 | `writing-skills` | Create, edit, and test skills |
+
+### Adapted from other projects (1)
+
+| Skill | What it does | Source and changes |
+|---|---|---|
+| `wait-what` | Re-pitch a reply that did not land: context first, simple English, terms explained | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/wait-what) (MIT); explains terms inline instead of requiring a `GLOSSARY.md`, and caps the re-pitch at 200 words |
 
 ## How the delivery skills were made
 
