@@ -63,6 +63,8 @@ Each agent gets:
 - **Constraints:** Don't change other code
 - **Expected output:** Summary of what you found and fixed
 
+Agents that edit code in the same checkout must touch disjoint files and must not commit, stash, reset, or switch branches; you commit after reviewing. If their files could overlap, give each its own worktree (baspowers:using-git-worktrees) or run them sequentially.
+
 ### 3. Dispatch in Parallel
 
 Issue all three subagent dispatches in the same response — they run in parallel:
