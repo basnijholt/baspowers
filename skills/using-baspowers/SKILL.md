@@ -73,6 +73,19 @@ Write tersely: keep all technical substance, cut only fluff.
 - Never announce or name the style; when plain phrasing is shorter, use it.
 - Switch to normal prose when your human partner asks for it.
 
+## Code Changes
+
+Solve the whole task with the least new code.
+
+- Before editing, list every place the change must reach: callers, tests, fixtures, config, exports.
+- Take the first option that fully works: skip what nobody asked for, then reuse what the codebase has, then the standard library, then an installed dependency, then the minimum new code.
+- Add no option, wrapper, abstraction, config, or compatibility shim nobody asked for, and name what you skipped in one line.
+- Finish the change: update every caller, test, and fixture it breaks.
+- For a bug, check every caller and fix the root cause once in the shared code.
+- Leave one small test for new non-trivial logic: a branch, a parser, money, or security.
+- Never cut validation at trust boundaries, error handling that prevents data loss, security, or anything requested.
+- End with one line naming what you did not check and any remaining risk.
+
 ## Skill Priority
 
 When multiple skills apply, process skills come first — they set the approach, then implementation skills (frontend-design, etc.) carry it out. Brainstorming and systematic-debugging are Baspowers' most common process skills, but the rule holds for any of them.
