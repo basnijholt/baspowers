@@ -27,8 +27,7 @@ session parked on a question costs their whole day and buys nothing.
 Four things stop you, and only these: an irreversible or destructive
 operation; a security-sensitive action; a side effect outside this worktree
 that norms say you ask about first (a merge, a push to a shared branch, a
-publish); and a plan so broken that every path forward is a guess. For those,
-stop and ask.
+publish); and a plan so broken that every path forward is a guess even after baspowers:consulting-cross-model. For those, stop and ask.
 
 ## When to Use
 
@@ -422,7 +421,7 @@ the cross-task context the reviewer lacks:
   ledger it as `Task <N>: Ruling: <finding> — <what you decided and why>`,
   and carry it into the next task's dispatch. Parking a structural failure
   silently lets every dependent task build on it. Stop only when the defect
-  leaves every path forward a guess.
+  leaves every path forward a guess even after baspowers:consulting-cross-model.
 
 Adjudicate only at the cap. Adjudicating earlier to end a loop is
 pre-judging with a different name. Every adjudication is a ledger entry —
