@@ -25,6 +25,8 @@ Subagent (general-purpose):
     **Base:** [BASE_SHA]
     **Head:** [HEAD_SHA]
 
+    If a diff file is given ([DIFF_FILE]), read it instead of running these:
+
     ```bash
     git diff --stat [BASE_SHA]..[HEAD_SHA]
     git diff [BASE_SHA]..[HEAD_SHA]
@@ -156,6 +158,7 @@ Subagent (general-purpose):
 - `[PLAN_OR_REQUIREMENTS]` — what it should do (plan file path, task text, or requirements)
 - `[BASE_SHA]` — starting commit
 - `[HEAD_SHA]` — ending commit
+- `[DIFF_FILE]` — optional: path to a review package (e.g. from `review-package`); omit the sentence if there is none
 
 **Reviewer returns:** Strengths, Issues (Critical / Important / Minor), Recommendations, Assessment
 
