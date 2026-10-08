@@ -29,6 +29,7 @@ It also adds:
 
 - original skills, most of them mined from my own agent history and A/B tested (see [how they were made](#how-the-delivery-skills-were-made));
 - a terse response style adapted from [caveman](https://github.com/JuliusBrussee/caveman) and [i-have-adhd](https://github.com/ayghri/i-have-adhd), built into the bootstrap;
+- minimal-change coding rules adapted from [ponytail](https://github.com/DietrichGebert/ponytail), also in the bootstrap;
 - a `/wait-what` command from [mattpocock/skills](https://github.com/mattpocock/skills) for replies that did not land.
 
 See [Skills](#skills) for what is original, modified, copied, or adapted.
@@ -54,7 +55,7 @@ Every upstream skill is renamed from superpowers to baspowers; that rename alone
 
 | Skill | What it does | What changed | `SKILL.md` size |
 |---|---|---|---|
-| `using-baspowers` | Bootstrap: pick the skills that apply at the start of each task | Loads skills once per task instead of before every response; agent decides routine, reversible work itself; adds a terse response style adapted from [caveman](https://github.com/JuliusBrussee/caveman), with a five-item list cap from [i-have-adhd](https://github.com/ayghri/i-have-adhd) | +88% (492 → 926) |
+| `using-baspowers` | Bootstrap: pick the skills that apply at the start of each task | Loads skills once per task instead of before every response; agent decides routine, reversible work itself; adds a terse response style adapted from [caveman](https://github.com/JuliusBrussee/caveman), with a five-item list cap from [i-have-adhd](https://github.com/ayghri/i-have-adhd); adds minimal-change coding rules adapted from [ponytail](https://github.com/DietrichGebert/ponytail) | +120% (492 → 1083) |
 | `brainstorming` | Turn an idea into a checked design before building | No approval gates (agent presents the design and proceeds); keeps v6.4.2, not the unreleased `dev` rebuild | -12% (2613 → 2287) |
 | `writing-plans` | Write a step-by-step implementation plan from a spec | Agent picks the execution mode instead of asking and records it in the plan | -3% (1639 → 1593) |
 | `executing-plans` | Execute a plan yourself in this session, with one final review | Creates an isolated branch instead of asking for consent | 0% (3267 → 3274) |
