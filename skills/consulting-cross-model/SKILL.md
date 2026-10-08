@@ -85,6 +85,24 @@ submodule. Compare it with `git rev-parse --show-toplevel`; if they differ,
 name the exact nested repository path in the prompt so the adviser inspects the
 right tree.
 
+## Review Mode
+
+baspowers:merging-when-approved uses the same call for an independent code review of a pull request.
+In review mode these rules replace When to Consult, Stopping Rules, and the adviser footer:
+
+- Review the full diff at the pinned head SHA, not a delta since an earlier review.
+- End the prompt with this footer instead of the adviser footer:
+
+  > You are a code reviewer. Inspect only; do not edit, commit, or run
+  > `agent-cli`. Do not consult another agent. Report real defects with
+  > file:line and a failing scenario, plus over-engineering and scope creep.
+  > End with `VERDICT: APPROVE` or `VERDICT: CHANGES REQUIRED`.
+
+- There is no word limit.
+- Use `timeout 900` instead of `timeout 300`.
+- Each push starts a new review round; review rounds don't count toward any consultation limit.
+- `BASPOWERS_CONSULT_DEPTH` still applies, and the verdict gates the merge but authorizes nothing else.
+
 ## Decide and Record
 
 Evaluate the advice against repository evidence. Record one line:
