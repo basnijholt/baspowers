@@ -578,6 +578,22 @@ Full pressure-scenario runs are the final gate, but they are slow and expensive 
 
 Micro-tests verify wording; they do not replace pressure scenarios for discipline skills.
 
+### Trimming or Rewriting an Existing Skill
+
+RED-GREEN assumes you are adding guidance. When you cut or restructure, test
+the edit itself:
+
+1. **Three arms:** no skill (or a one-line policy), the current skill, the
+   edited skill. A passage whose removal leaves results unchanged was doing
+   no work: delete it.
+2. **Several models,** including the weakest one you support at low effort.
+   Strong models hide what weak ones need.
+3. **Score behavior, not answers:** run the task in a throwaway repo and
+   inspect what happened (files, git state, commands run), not what the agent
+   says it would do.
+4. **Layout over length:** on weak models, numbered steps with exact commands
+   beat prose with the same content. Cut words, keep the steps.
+
 **Testing methodology:** See [testing-skills-with-subagents.md](testing-skills-with-subagents.md) for the complete testing methodology:
 - How to write pressure scenarios
 - Pressure types (time, sunk cost, authority, exhaustion)
