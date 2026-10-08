@@ -7,7 +7,7 @@ It started as a fork of [obra/superpowers](https://github.com/obra/superpowers) 
 
 - most upstream skills are modified to let the agent decide routine work itself, and some are rewritten;
 - original skills, most of them mined from my own agent history and A/B tested (see [how they were made](#how-the-delivery-skills-were-made));
-- a terse response style adapted from [caveman](https://github.com/JuliusBrussee/caveman), built into the bootstrap.
+- a terse response style adapted from [caveman](https://github.com/JuliusBrussee/caveman) and [i-have-adhd](https://github.com/ayghri/i-have-adhd), built into the bootstrap.
 
 See [Skills](#skills) for what is original, modified, or copied.
 
