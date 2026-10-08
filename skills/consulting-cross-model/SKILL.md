@@ -29,6 +29,7 @@ Cheap reversible choices do not qualify. Decide those yourself.
 - Advice never grants permission for destructive, irreversible, security-sensitive, or external actions.
 - Bound the call to 300 seconds. Failure, timeout, or empty output means decide from existing evidence.
 - If two decisions in one task already needed consultation, a third indicates an under-specified task. Ask your human partner.
+  When executing a plan, each plan task counts as its own task.
 
 End every prompt with:
 
