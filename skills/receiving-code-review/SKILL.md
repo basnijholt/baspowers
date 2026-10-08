@@ -9,7 +9,7 @@ description: Use when receiving code review feedback, before implementing sugges
 
 Code review requires technical evaluation, not emotional performance.
 
-**Core principle:** Verify before implementing. Ask before assuming. Technical correctness over social comfort.
+**Core principle:** Verify before implementing. Investigate before assuming. Technical correctness over social comfort.
 
 ## The Response Pattern
 
@@ -42,7 +42,9 @@ WHEN receiving code review feedback:
 ```
 IF any item is unclear:
   STOP - do not implement anything yet
-  ASK for clarification on unclear items
+  Clarify unclear items: from the code first, then from the reviewer
+  (a subagent or cross-model reviewer counts); ask your human partner
+  only if the item depends on a decision only they can make
 
 WHY: Items may be related. Partial understanding = wrong implementation.
 ```
@@ -94,7 +96,7 @@ IF conflicts with a decision your human partner stated directly:
 IF reviewer suggests "implementing properly":
   grep codebase for actual usage
 
-  IF unused: "This endpoint isn't called. Remove it (YAGNI)?"
+  IF unused: decline with the evidence: "Nothing calls this endpoint; not adding it (YAGNI)."
   IF used: Then implement properly
 ```
 
@@ -127,7 +129,7 @@ Push back when:
 - Use technical reasoning, not defensiveness
 - Ask specific questions
 - Reference working tests/code
-- Involve your human partner if architectural
+- For architectural conflicts, use baspowers:consulting-cross-model, unless your human partner stated the decision directly
 
 **If you're uncomfortable pushing back out loud:** Name that tension, then tell your partner about the issue you've seen. They'll appreciate your honesty.
 
@@ -174,7 +176,7 @@ State the correction factually and move on.
 | Assuming reviewer is right | Check if breaks things |
 | Avoiding pushback | Technical correctness > comfort |
 | Partial implementation | Clarify all items first |
-| Can't verify, proceed anyway | State limitation, ask for direction |
+| Can't verify, proceed anyway | Investigate the cheapest reliable way; record what stays unverified |
 
 ## Real Examples
 
@@ -193,7 +195,7 @@ Reviewer: "Remove legacy code"
 **YAGNI (Good):**
 ```
 Reviewer: "Implement proper metrics tracking with database, date filters, CSV export"
-✅ "Grepped codebase - nothing calls this endpoint. Remove it (YAGNI)? Or is there usage I'm missing?"
+✅ "Grepped codebase - nothing calls this endpoint. Not adding it (YAGNI)."
 ```
 
 **Unclear Item (Good):**
