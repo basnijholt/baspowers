@@ -79,14 +79,22 @@ completion question.
 MAIN_ROOT=$(git -C "$(git rev-parse --git-common-dir)/.." rev-parse --show-toplevel)
 cd "$MAIN_ROOT"
 
+# Worked in a linked worktree? The main checkout belongs to your human
+# partner: merge there only if it is clean and already on the base branch.
+git status --porcelain            # must print nothing
+git branch --show-current         # must print <base-branch>
+# Worked in the main checkout itself? Switch it: git checkout <base-branch>
+
 # Merge first — verify success before removing anything
-git checkout <base-branch>
 git pull
 git merge <feature-branch>
 
 # Verify tests on merged result
 <test command>
 ```
+
+If you worked in a linked worktree and the main checkout has uncommitted
+changes or is on another branch, do not switch or stash it: report and stop.
 
 If tests fail on the merged result: stop, leave the worktree and branch in
 place, and investigate — nothing has been pushed, so the merge is local
