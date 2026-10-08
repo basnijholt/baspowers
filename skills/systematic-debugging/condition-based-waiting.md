@@ -40,7 +40,7 @@ const result = getResult();
 expect(result).toBeDefined();
 
 // ✅ AFTER: Waiting for condition
-await waitFor(() => getResult() !== undefined);
+await waitFor(() => getResult() !== undefined, 'result');
 const result = getResult();
 expect(result).toBeDefined();
 ```
