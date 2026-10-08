@@ -34,16 +34,17 @@ fi
 echo "Found $TOTAL test files"
 echo ""
 
+# Pollution that exists before any test runs would make every test look
+# clean; refuse to run rather than report a false "no polluter found".
+if [ -e "$POLLUTION_CHECK" ]; then
+  echo "❌ $POLLUTION_CHECK already exists before running any test."
+  echo "   Remove it first, then re-run."
+  exit 2
+fi
+
 COUNT=0
 for TEST_FILE in $TEST_FILES; do
   COUNT=$((COUNT + 1))
-
-  # Skip if pollution already exists
-  if [ -e "$POLLUTION_CHECK" ]; then
-    echo "⚠️  Pollution already exists before test $COUNT/$TOTAL"
-    echo "   Skipping: $TEST_FILE"
-    continue
-  fi
 
   echo "[$COUNT/$TOTAL] Testing: $TEST_FILE"
 
