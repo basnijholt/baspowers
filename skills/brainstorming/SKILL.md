@@ -249,8 +249,9 @@ A browser-based companion for showing mockups, diagrams, and visual options duri
 
 **Starting the companion (just-in-time):** Do NOT start it upfront. When a
 question would genuinely be clearer shown than told — a real mockup, layout,
-or diagram question, not merely a UI topic — start it with `--open`, state what
-you are showing, and continue.
+or diagram question, not merely a UI topic — start it with `--open` without
+asking first. A screen you push is a question: say what it shows and wait for
+the answer, as with any other question.
 
 **Per-question decision:** Decide FOR EACH QUESTION whether to use the browser or the terminal. The test: **would the user understand this better by seeing it than reading it?**
 
