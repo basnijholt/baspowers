@@ -130,9 +130,9 @@ Subagent (general-purpose):
 
     ### Assessment
 
-    **Ready to merge?** [Yes | No | With fixes]
-
     **Reasoning:** [1-2 sentence technical assessment]
+
+    End with exactly one line: `VERDICT: APPROVE` or `VERDICT: CHANGES REQUIRED`.
 
     ## Critical Rules
 
