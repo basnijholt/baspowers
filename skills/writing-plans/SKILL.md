@@ -56,7 +56,9 @@ independently testable deliverable.
 ```markdown
 # [Feature Name] Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use baspowers:subagent-driven-development (recommended) or baspowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: implement this plan task-by-task with the skill named in **Execution**. Steps use checkbox (`- [ ]`) syntax.
+
+**Execution:** [baspowers:subagent-driven-development or baspowers:executing-plans — one-line reason; filled in at Execution Selection]
 
 **Goal:** [One sentence describing what this builds]
 
@@ -187,8 +189,8 @@ Otherwise pick one:
 
 Base the choice on the plan: how much the tasks depend on each other's
 interfaces, how many there are, what a shipped mistake would cost. State the
-choice and reason in one sentence, then proceed. Do not pause for a routine
-handoff question.
+choice and reason in one sentence, record it in the plan header's
+**Execution** line, then proceed. Do not pause for a routine handoff question.
 
 **If Subagent-driven selected:**
 - **REQUIRED SUB-SKILL:** Use baspowers:subagent-driven-development
