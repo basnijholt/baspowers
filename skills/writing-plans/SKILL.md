@@ -78,8 +78,8 @@ include this section.]
 
 ## Review Focus
 
-[The five input classes or failure modes the spec implies but no task's
-tests exercise that are most likely to bite a person using this software
+[The five input classes or failure modes the spec implies but the drafted
+tasks' tests don't yet exercise, that are most likely to bite a person using this software
 — one line each, naming the input or condition and the behavior a
 reasonable person would expect, most likely first. The spec is a vision
 document: it says what the software must do, not everything it will
