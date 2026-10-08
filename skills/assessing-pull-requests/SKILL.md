@@ -7,16 +7,16 @@ description: Use when asked whether a pull request or change is good, clean, big
 
 ## Overview
 
-Answer with a fixed scorecard, verdict first. Size means net production code.
+Answer with a fixed scorecard, verdict first.
+Size means net production code.
 Tests and docs never count against a change.
 
 ## Gather
 
-- **Size:** `git diff --numstat <base>...<head>`. Classify each file as
-  production, test, or docs/config. Net production LOC = production lines
-  added minus production lines deleted.
-- **Cause:** which failure motivated the change, and whether the change removes
-  its cause or hides its symptom.
+- **Size:** `git diff --numstat <base>...<head>`.
+  Classify each file as production, test, or docs/config.
+  Net production LOC = production lines added minus production lines deleted.
+- **Cause:** which failure motivated the change, and whether the change removes its cause or hides its symptom.
 - **Reviews:** who approved which SHA, and whether that SHA is the current head.
 - **Evidence:** whether anything ran against a real system, or only mocks.
 
@@ -39,8 +39,7 @@ Keep it under 200 words.
 | Reviews | reviewer, SHA, current or stale |
 | Risk / confidence | low, medium, or high, with one reason |
 
-When the structure matters for the decision, add a tree of the changed
-production files with one line each, or the call path the change sits on.
+When the structure matters for the decision, add a tree of the changed production files with one line each, or the call path the change sits on.
 
 Mark every claim you did not verify as **unverified**.
 

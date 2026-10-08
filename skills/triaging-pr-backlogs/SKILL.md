@@ -7,9 +7,8 @@ description: Use when asked to clean up, triage, or prune a backlog of open pull
 
 ## Overview
 
-"Clean up the backlog" authorizes closing what is provably redundant and
-merging what passes the normal review gate. Classify every item with evidence,
-act on the safe classes now, and report the rest.
+"Clean up the backlog" authorizes closing what is provably redundant and merging what passes the normal review gate.
+Classify every item with evidence, act on the safe classes now, and report the rest.
 
 ## Classes
 
@@ -29,8 +28,8 @@ act on the safe classes now, and report the rest.
 1. Inventory every open item:
    `gh pr list --state open --limit 200 --json number,title,author,createdAt,updatedAt,mergeable,statusCheckRollup`
 2. Classify each item and record the evidence.
-3. Execute the close and merge classes without asking again. Ask only about
-   items that fit no class.
+3. Execute the close and merge classes without asking again.
+   Ask only about items that fit no class.
 4. Report counts (closed, merged, commented, left) with a link per item.
 
 ## Common Mistakes
