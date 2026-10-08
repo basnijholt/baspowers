@@ -184,7 +184,7 @@ implementation.
 
 Use the least powerful model that can handle each role to conserve cost and increase speed.
 
-**Mechanical implementation tasks** (isolated functions, clear specs, 1-2 files): use a fast, cheap model. Most implementation tasks are mechanical when the plan is well-specified.
+**Mechanical implementation tasks**: use the cheapest tier only when the plan text contains the complete code, or for a single-file mechanical fix (see Turn count below). An implementer working from a prose spec gets the mid tier, even for 1-2 files.
 
 **Integration and judgment tasks** (multi-file coordination, pattern matching, debugging): use a standard model.
 
@@ -213,7 +213,8 @@ implementation is transcription plus testing: use the cheapest tier for
 that implementer. Single-file mechanical fixes also take the cheapest tier.
 
 **Task complexity signals (implementation tasks):**
-- Touches 1-2 files with a complete spec → cheap model
+- Plan text contains the complete code, or a single-file mechanical fix → cheapest model
+- Prose spec for 1-2 files → mid-tier model
 - Touches multiple files with integration concerns → standard model
 - Requires design judgment or broad codebase understanding → most capable model
 
