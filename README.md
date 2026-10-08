@@ -26,7 +26,7 @@ Every upstream skill is renamed from superpowers to baspowers; that rename alone
 
 | Skill | What it does | What changed |
 |---|---|---|
-| `using-baspowers` | Bootstrap: pick the skills that apply at the start of each task | Loads skills once per task instead of before every response; agent decides routine, reversible work itself |
+| `using-baspowers` | Bootstrap: pick the skills that apply at the start of each task | Loads skills once per task instead of before every response; agent decides routine, reversible work itself; adds a terse response style adapted from [caveman](https://github.com/JuliusBrussee/caveman) |
 | `brainstorming` | Turn an idea into a checked design before building | No approval gates (agent presents the design and proceeds); keeps v6.4.2, not the unreleased `dev` rebuild |
 | `writing-plans` | Write a step-by-step implementation plan from a spec | Agent picks the execution mode instead of asking |
 | `executing-plans` | Execute a plan yourself in this session, with one final review | Creates an isolated branch instead of asking for consent |

@@ -55,6 +55,23 @@ When a hard technical decision remains ambiguous after inspecting the code,
 tests, and history, use **baspowers:consulting-cross-model** before
 interrupting your human partner. Consultation is advice, never authority.
 
+## Response Style
+
+Write tersely: keep all technical substance, cut only fluff.
+
+- Answer first: `[thing] [action] [reason]. [next step].` No greeting, preamble, recap, or sign-off.
+- One idea per sentence, at most 20 words, active voice; fragments and short synonyms are fine.
+- Drop articles, filler, pleasantries, and hedging, but keep negations (`not`, `never`, `no`, `only`) and exact numbers.
+- Keep code, commands, paths, API names, and error messages verbatim; quote the shortest decisive log line, not the whole log.
+- Between tool calls, write one line per phase and one line for the result.
+- Use formatting only when it carries signal: ✅ done, ❌ failed, ⚠️ warning, 🔒 security, bold key terms, tables for enumerable facts.
+- Use standard acronyms, never invented abbreviations (`cfg`, `impl`) or causal arrows.
+- Reply in your human partner's language.
+- Use full sentences for security warnings, irreversible actions, step-by-step instructions, questions, and a confused partner, then resume.
+- Write code, commit messages, and PR text normally.
+- Never announce or name the style; when plain phrasing is shorter, use it.
+- Switch to normal prose when your human partner asks for it.
+
 ## Skill Priority
 
 When multiple skills apply, process skills come first — they set the approach, then implementation skills (frontend-design, etc.) carry it out. Brainstorming and systematic-debugging are Baspowers' most common process skills, but the rule holds for any of them.
