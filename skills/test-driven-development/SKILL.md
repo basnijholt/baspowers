@@ -184,7 +184,7 @@ Confirm:
 
 **Test fails?** Fix code, not test.
 
-**Other tests fail?** Fix now.
+**Other tests fail?** If your change broke them, fix now. If they were already failing, report them by name (below) instead of fixing them as part of this change.
 
 **"Other tests" means the project's suite, not just your file.** A
 green run of the test you wrote is not a green suite. Before you call
