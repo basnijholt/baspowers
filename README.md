@@ -49,8 +49,8 @@ Every upstream skill is renamed from superpowers to baspowers; that rename alone
 | `dispatching-parallel-agents` | Run independent tasks in parallel subagents | Parallel editors in one checkout touch disjoint files and leave git state alone | +5% (865 → 905) |
 | `using-git-worktrees` | Isolate feature work in a git worktree | Rewritten; reuses a worktree only if it is fresh | -67% (1069 → 354) |
 | `finishing-a-development-branch` | Decide how to merge, PR, or clean up finished work | Follows the requested outcome instead of an options menu; creates a branch on detached HEAD; cleans up only its own worktrees; never switches your main checkout | +4% (1269 → 1322) |
-| `writing-skills` | Create, edit, and test skills | Quick-reference and red-flag sections only when testing shows a need; guidance for trimming existing skills | +1% (3814 → 3863) |
-| `diagnosing-baspowers` | Diagnose from transcripts why a session went wrong | Was `diagnosing-superpowers`. GitHub issue step removed | -8% (1065 → 977) |
+| `writing-skills` | Create, edit, and test skills | Quick-reference and red-flag sections only when testing shows a need; guidance for trimming existing skills | +2% (3814 → 3884) |
+| `diagnosing-baspowers` | Diagnose from transcripts why a session went wrong | Was `diagnosing-superpowers`. Proposes skill changes instead of refusing to; GitHub issue step and scrubbed-bundle export removed | -26% (1065 → 785) |
 
 ### Copied from Superpowers (1)
 
@@ -65,6 +65,54 @@ Identical to upstream apart from the rename.
 | Skill | What it does | Source and changes |
 |---|---|---|
 | `wait-what` | Re-pitch a reply that did not land: context first, simple English, terms explained | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/wait-what) (MIT); explains terms inline instead of requiring a `GLOSSARY.md`, and caps the re-pitch at 200 words |
+
+## Methodology
+
+How the upstream skills were changed, and the evidence behind each decision.
+
+### Principles
+
+1. **Spend tokens only where they change behavior.**
+   A skill body loads in full each time the skill triggers, and `using-baspowers` is injected into every Claude Code session.
+   So we cut what agents already know (so far: the git and setup commands in `using-git-worktrees`), files that never load or target removed harnesses, and text that contradicts other skills.
+   We did not trim for its own sake: most `SKILL.md` files are now slightly longer than upstream, because the fixes add rules (see the size column above), while dead supporting files are gone.
+2. **Layout over length.**
+   Checklists and question lists stay as separate lines; an agent answers each listed question, while the same items in a comma-separated sentence get skimmed.
+   On weaker models, numbered steps with exact commands beat prose with the same content.
+3. **No contradictions.**
+   OpenAI's [GPT-6 guide](https://developers.openai.com/api/docs/guides/latest-model) warns that the model "can be more sensitive to instructions contained in skills" and that "unclear or conflicting guidance in a skill file may cause the model to pause and block work early".
+   We audited every skill for contradictions, within a skill and between skills, and fixed each in its own commit.
+4. **Test behavior, not text.**
+   Each experiment ran the old version, the new version, and often a no-skill control on a realistic task in a throwaway repo, scored from what the agent did (files, git state, order of tool calls), not from what it said.
+   Models: Claude Opus 5.5, Claude Haiku 4.5 at low effort, GPT-6 Sol, and GPT-6 Luna at low effort.
+
+### Experiments
+
+| Question | Setup | Result | Decision |
+|---|---|---|---|
+| Rewrite `using-git-worktrees` (1069 → 354 words) | Session starts in a worktree another agent is using, in a fresh worktree, or in the main checkout; Opus, Haiku, Luna | The original committed on top of the other agent's work in every dirty-worktree run (0/3 Opus, 0/5 Luna, 0/3 Haiku). The final version: 9/9 Opus, 15/15 Luna. A prose draft scored 12/15 on Luna; numbered steps fixed it. Haiku at low effort was unreliable with every version. | Shipped the numbered version |
+| Does the bootstrap still trigger brainstorming? | "Let's make a react todo list", old vs new `using-baspowers`; Opus, Haiku | Brainstorming before any code: 8/8 old, 8/8 new | Kept |
+| Load skills once per task, instead of before every response | 3 turns in one session (feature, bug, status); 16 sessions on Opus and Sol | Identical: the right skill each turn and no skill re-read within a turn. GPT-6 Sol did not repeat GPT-5.6 Sol's habit of re-reading skills at every tool call, even with the old text. | Kept once per task |
+| "YOU MUST / NEVER / NO EXCEPTIONS" vs calm wording with reasons | `test-driven-development`: a bug fix under time pressure, plus a README-only change; 144 runs on all four models | Test written and seen failing first: no skill 0/32, emphatic 32/32, calm 32/32. No version invented tests for the README change (0/48). | No rewrite of existing skills; new skills use calm wording |
+| Why does Claude skip brainstorming on some feature requests? | Opus, fully specified vs vague vs larger requests | Fully specified small change: 0/8 (goes straight to TDD). Vague or larger: 8/8. | Left as is: it brainstorms when there is something to design |
+| Blanket trim of 13 skills for length | Wording-only rewrites, checked by an independent old-vs-new comparison | The text checks passed, but lists were folded into prose and comma-separated lines | Withdrawn before merging |
+
+### Vendor guidance and research applied
+
+- **Claude Opus 5.5** ([guide](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5)): the model is "responsive to instructions that name the specific kinds of early stop you want it to avoid", and long tasks should "keep the task's parts in a checklist the model updates".
+  Discipline skills keep short, specific red-flag lists, and checklists stay checklists.
+- **Claude prompting best practices** ([guide](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices)): newer models "may now overtrigger" on prompts written against undertriggering, so "dial back any aggressive language"; and use "numbered lists or bullet points when the order or completeness of steps matters".
+  Our TDD test found no measurable difference between emphatic and calm wording, so existing skills keep theirs and new skills are written calmly.
+- **GPT-6** ([guide](https://developers.openai.com/api/docs/guides/latest-model)): "We strongly recommend auditing skills", and "The user's instructions take precedence over guidelines provided in a skill."
+  This drove the contradiction audit; `using-baspowers` already states that user instructions win.
+- **Persuasion techniques**: upstream's `writing-skills` shipped a guide recommending Cialdini-style authority language ("YOU MUST") for skills, citing research on persuading models to comply with objectionable requests rather than on following instructions.
+  We removed it.
+  [PACT](https://arxiv.org/abs/2609.18605) (2026, 22 models) is a better fit: ordinary user pressure raises rule violations by 65% on average, which is why discipline skills keep their pressure-specific red flags.
+
+### What was not tested
+
+- The 36 behavior fixes in the cleanup (contradictions, bugs, and design changes such as the review mode in `consulting-cross-model`) were checked by review and by reading old against new, not by A/B runs.
+- The harnesses and run logs for these experiments were run locally and are not in this repository.
 
 ## How the delivery skills were made
 
