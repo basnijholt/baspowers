@@ -1,6 +1,6 @@
 ---
 name: diagnosing-baspowers
-description: Use when a baspowers session went wrong and your human partner wants to know why — repeated work, ignored plans, stumbles, poor results, a skill that didn't fire, "it took too long", "why is it so expensive", "what is it doing" — or wants a scrubbed bundle of the evidence, for the current session or a past one identified by id or path, on any harness.
+description: Use when a baspowers session went wrong and your human partner wants to know why — repeated work, ignored plans, stumbles, poor results, a skill that didn't fire, "it took too long", "why is it so expensive", "what is it doing", for the current session or a past one identified by id or path, on any harness.
 ---
 
 # Diagnosing Baspowers
@@ -9,7 +9,7 @@ description: Use when a baspowers session went wrong and your human partner want
 
 Pin down with your human partner what went wrong in a session, read the
 transcripts on disk, and report what happened with evidence. You report;
-you do not diagnose baspowers. Whoever triages the report or the bundle
+you do not diagnose baspowers. Whoever triages the report
 decides whether baspowers changes.
 
 **Core principle:** Every finding cites `path:line`. No citation, no
@@ -18,14 +18,13 @@ never from memory.
 
 ## Workflow
 
-Create a todo per step. Steps 5–6 run only on their stated condition.
+Create a todo per step. Step 5 runs only on its stated condition.
 
 1. **Problem intake.** Ask one question at a time until you can write a
    statement naming the session(s), the turn range if known, what your
    partner expected, what happened, and the observable they care about
    (wall-clock, tokens, repeated actions, one specific action). "It took
-   too long" is a complaint, not a problem statement. Note whether the
-   goal is a baspowers bug report.
+   too long" is a complaint, not a problem statement.
 2. **Locate.** Resolve each session to verified absolute filesystem paths using
    `references/session-discovery.md`. Confirm a past session by quoting its
    first prompt and timestamp, and list every candidate you rejected with the
@@ -45,19 +44,7 @@ Create a todo per step. Steps 5–6 run only on their stated condition.
    it to the workspace, show it, and give the path. Check what cited content
    actually proves and preserve the supporting case; a symlink alias is not a
    redundant copy.
-5. **Export** — only when your partner asks for a bundle; never build one
-   unprompted. If the intake goal was a bug report, say once that a
-   scrubbed bundle is available on request, then wait. Ask the redaction
-   level, stating what each includes: skeleton (no tool-result bodies),
-   evidence (bodies only for cited events), full. Build the bundle per
-   `templates/bundle-README.md`, dispatch `prompts/scrub.md`, then
-   `prompts/scrub-audit.md`, repeating both until the audit returns CLEAN.
-   Complete the bundle template's evidence check and reconciliation before
-   showing the final scrub log, file list, and privacy and evidence outcomes.
-   Archive (`zip -r` or `tar -czf`) only after approval. With the archive
-   path, state what it contains, point at the scrub log for replacements, and
-   say scrubbing can miss things: they must review every file before sharing.
-6. **Similar sessions** — when asked. Turn confirmed findings into a
+5. **Similar sessions** — when asked. Turn confirmed findings into a
    signature, list candidates by mtime and size, find marker line numbers,
    dispatch `prompts/similar-session.md` per candidate in parallel, and
    append report §9.
@@ -88,12 +75,9 @@ yourself in step 3 and which findings to lead with in the verdict.
   parent agent.
 - **No baspowers diagnosis.** Report §7 states involvement and stops.
   Never name a defect in a skill or propose a change. Your partner
-  pressing for a fix does not waive this; point at report §7 and
-  mention that a bundle is available on request. No advice to your
-  partner either.
-- **Approval gates.** No archive before your partner has seen the scrub
-  log and file list.
-- **Intake before analysis.** Nothing in steps 2–6 starts until your
+  pressing for a fix does not waive this; point at report §7. No advice
+  to your partner either.
+- **Intake before analysis.** Nothing in steps 2–5 starts until your
   partner has answered. If they are away, write the questions and stop.
   A statement you reconstructed for them is not an answer. An
   already-scoped request — one specific event, what is running now, or
@@ -107,6 +91,5 @@ yourself in step 3 and which findings to lead with in the verdict.
 | "The problem is obvious, skip intake" | The problem statement scopes everything. Ask. |
 | "They're away, so I'll reconstruct the statement" | You cannot reconstruct what they wanted. Write the questions and stop. |
 | "I'll sweep everything now and ask at the end" | An unscoped sweep spends their budget on the wrong question. Ask first. |
-| "They want a bug report, so I'll build the bundle now" | The bundle is their session data, packaged. Build it only when they ask for it. |
 | "Small, targeted edit, no restructuring needed" | Not your call, however small. Report the evidence; the triager decides. |
 | "The price per token is well known" | Numbers you did not compute from the transcript are invented. Cite or drop. |
