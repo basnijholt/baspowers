@@ -66,8 +66,9 @@ A dimension with nothing to report says `none found — checked: <what was check
 
 not indicated | possible | likely
 
-Evidence lines: <path:line list>. This section states involvement only. It
-does not name a defect and does not propose a change.
+Evidence lines: <path:line list>.
+Skill text involved: <skill file:line, quoted, or "none">.
+Proposed change: <one or two lines per skill, or "none">.
 
 ## 8. Coverage notes (REQUIRED)
 
