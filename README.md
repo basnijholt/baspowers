@@ -2,7 +2,14 @@
   <img src="assets/logo.svg" alt="Baspowers" width="560">
 </h1>
 
-Personal fork of [obra/superpowers](https://github.com/obra/superpowers): a set of composable skills for coding agents, plus the bootstrap that makes the agent use them.
+My set of composable skills for coding agents, plus the bootstrap that makes the agent use them.
+It started as a fork of [obra/superpowers](https://github.com/obra/superpowers) and has grown well beyond it:
+
+- most upstream skills are modified to let the agent decide routine work itself, and some are rewritten;
+- original skills, most of them mined from my own agent history and A/B tested (see [how they were made](#how-the-delivery-skills-were-made));
+- a terse response style adapted from [caveman](https://github.com/JuliusBrussee/caveman), built into the bootstrap.
+
+See [Skills](#skills) for what is original, modified, or copied.
 
 - `skills/` — the skills
 - `hooks/` — Claude Code `SessionStart` hook that injects `using-baspowers`
