@@ -20,9 +20,11 @@ Build the per-human-turn record of skill and plugin use, then look for gaps.
    install root is in the case file). Report as findings:
    - a skill invoked, with the request that preceded it (one finding per
      invocation is fine when there are few; group by skill when many);
-   - a turn whose request matches a skill's trigger description with no
-     invocation in that turn (state which description matched and quote
-     the request);
+   - a task whose request matches a skill's trigger description with no
+     invocation of that skill earlier in the same task (state which
+     description matched and quote the request). Baspowers loads skills once
+     per task: follow-up turns of the same task need no new invocation, and
+     a skill whose content is already in context counts as loaded;
    - a skill invoked one or more turns after the matching request (late);
    - each non-baspowers plugin/skill/tool used, with where.
 
