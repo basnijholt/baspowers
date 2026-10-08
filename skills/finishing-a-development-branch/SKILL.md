@@ -35,13 +35,18 @@ GIT_COMMON=$(cd "$(git rev-parse --git-common-dir)" 2>/dev/null && pwd -P)
 WORKTREE_PATH=$(git rev-parse --show-toplevel)
 ```
 
-This determines which integration actions are available and how cleanup works:
+**Detached HEAD** (`git branch --show-current` prints nothing, common in
+harness-managed worktrees): create a branch now with
+`git switch -c <descriptive-branch>`. Commits left on a detached HEAD are
+lost when the host deletes its worktree. If branch creation is blocked (e.g.
+by a sandbox), report the detached state and the head SHA, and stop.
 
-| State | Available integration | Cleanup |
-|-------|------|---------|
-| `GIT_DIR == GIT_COMMON` (normal repo) | merge, PR, or keep | No worktree to clean up |
-| `GIT_DIR != GIT_COMMON`, named branch | merge, PR, or keep | Provenance-based (see Step 6) |
-| `GIT_DIR != GIT_COMMON`, detached HEAD | PR or keep (no local merge) | Externally managed — leave in place |
+This determines how cleanup works:
+
+| State | Cleanup |
+|-------|---------|
+| `GIT_DIR == GIT_COMMON` (normal repo) | No worktree to clean up |
+| `GIT_DIR != GIT_COMMON` | Provenance-based (see Step 6) |
 
 ## Step 3: Determine Base Branch
 
@@ -60,8 +65,6 @@ instructions:
 - If the request includes local integration, merge locally.
 - If no integration side effect was requested, keep the branch and worktree,
   report their state, and stop. Do not turn completion into a permission menu.
-- A detached HEAD cannot merge locally; when local integration was requested,
-  create a named branch and report the constraint before any external action.
 
 Publishing, merging, or deleting work without that outcome being requested
 requires new authority. Preserve the branch instead of asking a routine
@@ -100,8 +103,6 @@ git branch -d <feature-branch>
 
 ```bash
 git push -u origin <feature-branch>
-# From a detached HEAD, name the new branch on the remote:
-# git push origin HEAD:refs/heads/<new-branch>
 ```
 
 Then create the pull/merge request against <base-branch> with the forge's
