@@ -8,32 +8,47 @@ Personal fork of [obra/superpowers](https://github.com/obra/superpowers): a set 
 
 ## Skills
 
-Upstream is [obra/superpowers](https://github.com/obra/superpowers) v6.4.2 plus later bug fixes from its `dev` branch. Every skill is renamed from superpowers to baspowers. **Verbatim** means identical to upstream apart from that rename.
+Upstream is [obra/superpowers](https://github.com/obra/superpowers) v6.4.2 plus later bug fixes from its `dev` branch.
+Every upstream skill is renamed from superpowers to baspowers; that rename alone does not count as a change.
 
-| Skill | What it does | Source |
+### Original to Baspowers (7)
+
+| Skill | What it does |
+|---|---|
+| `consulting-cross-model` | Ask another model about an ambiguous, costly decision |
+| `merging-after-independent-review` | Merge only after independent reviewers approve the exact head |
+| `assessing-pull-requests` | Verdict-first scorecard: net production LOC, root cause or bandage, risk |
+| `auditing-change-growth` | Stop and re-plan when a change outgrows its estimate or reviews keep finding defects |
+| `deploying-in-stages` | One deployment PR, staging first, production in a quiet window |
+| `reporting-status` | Open items only, with how far each got |
+| `triaging-pr-backlogs` | Close what is provably redundant, merge what passes review, report the rest |
+
+### Modified from Superpowers (11)
+
+| Skill | What it does | What changed |
 |---|---|---|
-| `using-baspowers` | Bootstrap: pick the skills that apply at the start of each task | Superpowers, **modified**: loads skills once per task instead of before every response; agent decides routine, reversible work itself |
-| `brainstorming` | Turn an idea into a checked design before building | Superpowers, **modified**: no approval gates (agent presents the design and proceeds); keeps v6.4.2, not the unreleased `dev` rebuild |
-| `writing-plans` | Write a step-by-step implementation plan from a spec | Superpowers, **modified**: agent picks the execution mode instead of asking |
-| `executing-plans` | Execute a plan yourself in this session, with one final review | Superpowers, **modified**: creates an isolated branch instead of asking for consent |
-| `subagent-driven-development` | Execute a plan task by task with fresh subagents and reviews | Superpowers, **modified**: creates an isolated branch instead of asking for consent |
-| `dispatching-parallel-agents` | Run independent tasks in parallel subagents | Superpowers, **verbatim** |
-| `test-driven-development` | Write a failing test first, then the code | Superpowers, **modified**: agent decides the named exceptions instead of asking |
-| `systematic-debugging` | Find the root cause before proposing a fix | Superpowers, **modified**: after three failed fixes, consults another model instead of asking |
-| `verification-before-completion` | Run the checks before claiming anything works | Superpowers, **verbatim** |
-| `requesting-code-review` | Get a review before merging | Superpowers, **verbatim** |
-| `receiving-code-review` | Verify review feedback instead of blindly applying it | Superpowers, **modified**: investigates instead of asking; consults another model when feedback conflicts with a recorded decision |
-| `using-git-worktrees` | Isolate feature work in a git worktree | Superpowers, **rewritten**: 1063 to 354 words; reuses a worktree only if it is fresh |
-| `finishing-a-development-branch` | Decide how to merge, PR, or clean up finished work | Superpowers, **modified**: follows the requested outcome instead of presenting an options menu |
-| `consulting-cross-model` | Ask another model about an ambiguous, costly decision | **New** in Baspowers |
-| `merging-after-independent-review` | Merge only after independent reviewers approve the exact head | **New** in Baspowers |
-| `assessing-pull-requests` | Verdict-first scorecard: net production LOC, root cause or bandage, risk | **New** in Baspowers |
-| `auditing-change-growth` | Stop and re-plan when a change outgrows its estimate or reviews keep finding defects | **New** in Baspowers |
-| `deploying-in-stages` | One deployment PR, staging first, production in a quiet window | **New** in Baspowers |
-| `reporting-status` | Open items only, with how far each got | **New** in Baspowers |
-| `triaging-pr-backlogs` | Close what is provably redundant, merge what passes review, report the rest | **New** in Baspowers |
-| `writing-skills` | Create, edit, and test skills | Superpowers, **verbatim** |
-| `diagnosing-baspowers` | Diagnose from transcripts why a session went wrong | Superpowers (`diagnosing-superpowers`), **modified**: GitHub issue step removed |
+| `using-baspowers` | Bootstrap: pick the skills that apply at the start of each task | Loads skills once per task instead of before every response; agent decides routine, reversible work itself |
+| `brainstorming` | Turn an idea into a checked design before building | No approval gates (agent presents the design and proceeds); keeps v6.4.2, not the unreleased `dev` rebuild |
+| `writing-plans` | Write a step-by-step implementation plan from a spec | Agent picks the execution mode instead of asking |
+| `executing-plans` | Execute a plan yourself in this session, with one final review | Creates an isolated branch instead of asking for consent |
+| `subagent-driven-development` | Execute a plan task by task with fresh subagents and reviews | Creates an isolated branch instead of asking for consent |
+| `test-driven-development` | Write a failing test first, then the code | Agent decides the named exceptions instead of asking |
+| `systematic-debugging` | Find the root cause before proposing a fix | After three failed fixes, consults another model instead of asking |
+| `receiving-code-review` | Verify review feedback instead of blindly applying it | Investigates instead of asking; consults another model when feedback conflicts with a recorded decision |
+| `using-git-worktrees` | Isolate feature work in a git worktree | Rewritten: 1063 to 354 words; reuses a worktree only if it is fresh |
+| `finishing-a-development-branch` | Decide how to merge, PR, or clean up finished work | Follows the requested outcome instead of presenting an options menu |
+| `diagnosing-baspowers` | Diagnose from transcripts why a session went wrong | Was `diagnosing-superpowers`. GitHub issue step removed |
+
+### Copied from Superpowers (4)
+
+Identical to upstream apart from the rename.
+
+| Skill | What it does |
+|---|---|
+| `dispatching-parallel-agents` | Run independent tasks in parallel subagents |
+| `verification-before-completion` | Run the checks before claiming anything works |
+| `requesting-code-review` | Get a review before merging |
+| `writing-skills` | Create, edit, and test skills |
 
 ## Install
 
