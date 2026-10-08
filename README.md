@@ -1,4 +1,6 @@
-# Baspowers
+<h1 align="center">
+  <img src="assets/logo.svg" alt="Baspowers" width="560">
+</h1>
 
 Personal fork of [obra/superpowers](https://github.com/obra/superpowers): a set of composable skills for coding agents, plus the bootstrap that makes the agent use them.
 
