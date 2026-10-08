@@ -24,6 +24,12 @@ Personal fork of [obra/superpowers](https://github.com/obra/superpowers): a set 
 | `using-git-worktrees` | Isolate feature work in a git worktree |
 | `finishing-a-development-branch` | Decide how to merge, PR, or clean up finished work |
 | `consulting-cross-model` | Ask another model about an ambiguous, costly decision |
+| `merging-after-independent-review` | Merge only after independent reviewers approve the exact head |
+| `assessing-pull-requests` | Verdict-first scorecard: net production LOC, root cause or bandage, risk |
+| `auditing-change-growth` | Stop and re-plan when a change outgrows its estimate or reviews keep finding defects |
+| `deploying-in-stages` | One deployment PR, staging first, production in a quiet window |
+| `reporting-status` | Open items only, with how far each got |
+| `triaging-pr-backlogs` | Close what is provably redundant, merge what passes review, report the rest |
 | `writing-skills` | Create, edit, and test skills |
 | `diagnosing-baspowers` | Diagnose from transcripts why a session went wrong |
 
