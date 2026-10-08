@@ -11,9 +11,9 @@ Personal fork of [obra/superpowers](https://github.com/obra/superpowers): a set 
 | Skill | What it does |
 |---|---|
 | `using-baspowers` | Bootstrap: pick the skills that apply at the start of each task |
-| `brainstorming` | Turn an idea into an approved design before building |
+| `brainstorming` | Turn an idea into a checked design before building |
 | `writing-plans` | Write a step-by-step implementation plan from a spec |
-| `executing-plans` | Execute a written plan in a separate session with checkpoints |
+| `executing-plans` | Execute a plan yourself in this session, with one final review |
 | `subagent-driven-development` | Execute a plan task by task with fresh subagents and reviews |
 | `dispatching-parallel-agents` | Run independent tasks in parallel subagents |
 | `test-driven-development` | Write a failing test first, then the code |
@@ -25,6 +25,7 @@ Personal fork of [obra/superpowers](https://github.com/obra/superpowers): a set 
 | `finishing-a-development-branch` | Decide how to merge, PR, or clean up finished work |
 | `consulting-cross-model` | Ask another model about an ambiguous, costly decision |
 | `writing-skills` | Create, edit, and test skills |
+| `diagnosing-baspowers` | Diagnose from transcripts why a session went wrong |
 
 ## Install
 

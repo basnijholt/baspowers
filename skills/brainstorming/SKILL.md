@@ -11,12 +11,45 @@ Start by classifying how much process the request needs, then work
 through your path: understand the context, refine the idea, choose a
 design, self-review it, and proceed.
 
+## Establish Shared Understanding
+
+The outcome of brainstorming is an understanding your human partner can
+recognize and correct, grounded in what they want to accomplish.
+
+1. **Discover intent.** Use the request and available context to identify
+   the intended outcome, who it is for, and what success looks like.
+   Knowing the app genre does not tell you why your partner wants it. When
+   the purpose is missing and the answer would materially change the
+   design, ask one focused question about purpose or intended use before
+   proposing features or an approach. Otherwise infer it and mark it as an
+   assumption.
+2. **Write back your understanding.** Summarize the intended outcome,
+   relevant constraints, and success criteria in a short note your partner
+   can assess. Separate what they said from assumptions so they can correct
+   it. The note is for visibility, not a permission request: continue
+   unless a correction arrives.
+3. **Carry intent into the design.** Preserve the understanding in the
+   selected path's design artifact: the written spec for architectural
+   work, or the in-chat design/probe for bounded work and spikes. Check
+   proposed features and technical choices against that understanding.
+
+When the request already supplies the purpose and constraints, reflect
+that understanding instead of asking the same questions again. Keep the
+note concise; its accuracy and the opportunity to correct it matter.
+
 <AUTONOMY-GATE>
 Do NOT begin implementation until you understand the context, have selected
 an approach, and have checked it against the request. Present the decision for
 visibility, then continue without waiting for routine approval. Stop only when
 the design requires missing information, expands scope materially, or needs
 new authority for an irreversible or external action.
+
+Implementation includes invoking an implementation skill, writing product
+code, scaffolding, installing product dependencies, or creating an external
+project. Complete the selected path's artifact first: the probe for a spike,
+the short in-chat design for bounded work, and for architectural work the
+written, self-reviewed spec followed by baspowers:writing-plans. Read-only
+project exploration is allowed before that.
 </AUTONOMY-GATE>
 
 ## Three Paths
@@ -49,16 +82,17 @@ say so and step up. Nothing downgrades mid-task.
 
 ## Anti-Pattern: Routine Approval Requests
 
-Every path requires enough design to make implementation intentional. A todo
-list, a single-function utility, or a config change may need only two sentences
-in chat. Presenting that decision is a status update, not a permission gate.
-Continue unless one of the authority boundaries above applies.
+Every path requires enough design to make implementation intentional. A
+bounded change may need only two sentences in chat. A new todo-list project
+is architectural and gets the written spec and plan. Scale the artifact to
+the selected path. Presenting decisions is a status update, not a permission
+gate. Continue unless one of the authority boundaries above applies.
 
 ## Red Flags
 
 | Thought | Reality |
 |---------|---------|
-| "This is too simple to need a design" | Simple means a short design, not no design. Two sentences in chat, then proceed. |
+| "This is too simple to need a design" | Follow the selected path: a bounded change gets a short chat design; an architectural change gets the written spec and plan. Then proceed. |
 | "I'll call it bounded and skip the spec" | Reaching for a label to skip work IS the doubt — take the heavier path. |
 | "I should ask whether this obvious reversible choice is okay" | Routine choices belong to the agent. Decide, state the decision, and proceed. |
 | "I understand this kind of app, so it's bounded" | Bounded measures the repo, not your familiarity. A new project has no existing flow — it is architectural. |
