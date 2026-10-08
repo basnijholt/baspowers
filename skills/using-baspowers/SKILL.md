@@ -101,10 +101,8 @@ These thoughts mean STOP—you're rationalizing:
 
 ## Platform Adaptation
 
-If your harness appears here, read its reference file for special instructions:
-
-- Claude Code: `references/claude-code-tools.md`
-- Codex: `references/codex-tools.md`
+- Codex: read `references/codex-tools.md`.
+- Claude Code: read `references/claude-code-tools.md` only when your human partner asks for a cheaper orchestrator for subagent-driven development.
 
 ## User Instructions
 
