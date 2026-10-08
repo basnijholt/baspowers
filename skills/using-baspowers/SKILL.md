@@ -86,16 +86,16 @@ These thoughts mean STOP—you're rationalizing:
 
 | Thought | Reality |
 |---------|---------|
-| "This is just a simple question" | Questions are tasks. Check for skills. |
+| "This is just a simple question" | A new question can be a new task. Check skills at the start of each task. |
 | "I need more context first" | Skill check comes BEFORE clarifying questions. |
 | "Let me explore the codebase first" | Skills tell you HOW to explore. Check first. |
 | "I can check git/files quickly" | Files lack conversation context. Check for skills. |
 | "Let me gather information first" | Skills tell you HOW to gather information. |
 | "This doesn't need a formal skill" | If a skill exists, use it. |
 | "I remember this skill" | If it is not in current context, read it. If it is already loaded, apply it without another filesystem read. |
-| "This doesn't count as a task" | Action = task. Check for skills. |
+| "This doesn't count as a task" | Any new request is a task. Check skills at its start. |
 | "The skill is overkill" | Simple things become complex. Use it. |
-| "I'll just do this one thing first" | Check BEFORE doing anything. |
+| "I'll just do this one thing first" | Check skills at the start of the task, before its first action. |
 | "This feels productive" | Undisciplined action wastes time. Skills prevent this. |
 | "I know what that means" | Knowing the concept ≠ using the skill. Invoke it. |
 
