@@ -6,6 +6,26 @@ Personal fork of [obra/superpowers](https://github.com/obra/superpowers): a set 
 - `hooks/` — Claude Code `SessionStart` hook that injects `using-baspowers`
 - `.claude-plugin/`, `.codex-plugin/`, `.agents/plugins/` — plugin and local marketplace manifests for Claude Code and Codex
 
+## Skills
+
+| Skill | What it does |
+|---|---|
+| `using-baspowers` | Bootstrap: pick the skills that apply at the start of each task |
+| `brainstorming` | Turn an idea into an approved design before building |
+| `writing-plans` | Write a step-by-step implementation plan from a spec |
+| `executing-plans` | Execute a written plan in a separate session with checkpoints |
+| `subagent-driven-development` | Execute a plan task by task with fresh subagents and reviews |
+| `dispatching-parallel-agents` | Run independent tasks in parallel subagents |
+| `test-driven-development` | Write a failing test first, then the code |
+| `systematic-debugging` | Find the root cause before proposing a fix |
+| `verification-before-completion` | Run the checks before claiming anything works |
+| `requesting-code-review` | Get a review before merging |
+| `receiving-code-review` | Verify review feedback instead of blindly applying it |
+| `using-git-worktrees` | Isolate feature work in a git worktree |
+| `finishing-a-development-branch` | Decide how to merge, PR, or clean up finished work |
+| `consulting-cross-model` | Ask another model about an ambiguous, costly decision |
+| `writing-skills` | Create, edit, and test skills |
+
 ## Install
 
 ```bash
