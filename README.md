@@ -91,14 +91,14 @@ How the upstream skills were changed, and the evidence behind each decision.
 
 1. **Spend tokens only where they change behavior.**
    A skill body loads in full each time the skill triggers, and `using-baspowers` is injected into every Claude Code session.
-   So we cut what agents already know (so far: the git and setup commands in `using-git-worktrees`), files that never load or target removed harnesses, and text that contradicts other skills.
-   We did not trim for its own sake: most `SKILL.md` files are now slightly longer than upstream, because the fixes add rules (see the size column above), while dead supporting files are gone.
+   So I cut what agents already know (so far: the git and setup commands in `using-git-worktrees`), files that never load or target removed harnesses, and text that contradicts other skills.
+   I did not trim for its own sake: most `SKILL.md` files are now slightly longer than upstream, because the fixes add rules (see the size column above), while dead supporting files are gone.
 2. **Layout over length.**
    Checklists and question lists stay as separate lines; an agent answers each listed question, while the same items in a comma-separated sentence get skimmed.
    On weaker models, numbered steps with exact commands beat prose with the same content.
 3. **No contradictions.**
    OpenAI's [GPT-6 guide](https://developers.openai.com/api/docs/guides/latest-model) warns that the model "can be more sensitive to instructions contained in skills" and that "unclear or conflicting guidance in a skill file may cause the model to pause and block work early".
-   We audited every skill for contradictions, within a skill and between skills, and fixed each in its own commit.
+   I audited every skill for contradictions, within a skill and between skills, and fixed each in its own commit.
 4. **Test behavior, not text.**
    Each experiment ran the old version, the new version, and often a no-skill control on a realistic task in a throwaway repo, scored from what the agent did (files, git state, order of tool calls), not from what it said.
    Models: Claude Opus 5.5, Claude Haiku 4.5 at low effort, GPT-6 Sol, and GPT-6 Luna at low effort.
@@ -119,11 +119,11 @@ How the upstream skills were changed, and the evidence behind each decision.
 - **Claude Opus 5.5** ([guide](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5)): the model is "responsive to instructions that name the specific kinds of early stop you want it to avoid", and long tasks should "keep the task's parts in a checklist the model updates".
   Discipline skills keep short, specific red-flag lists, and checklists stay checklists.
 - **Claude prompting best practices** ([guide](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices)): newer models "may now overtrigger" on prompts written against undertriggering, so "dial back any aggressive language"; and use "numbered lists or bullet points when the order or completeness of steps matters".
-  Our TDD test found no measurable difference between emphatic and calm wording, so existing skills keep theirs and new skills are written calmly.
+  My TDD test found no measurable difference between emphatic and calm wording, so existing skills keep theirs and new skills are written calmly.
 - **GPT-6** ([guide](https://developers.openai.com/api/docs/guides/latest-model)): "We strongly recommend auditing skills", and "The user's instructions take precedence over guidelines provided in a skill."
   This drove the contradiction audit; `using-baspowers` already states that user instructions win.
 - **Persuasion techniques**: upstream's `writing-skills` shipped a guide recommending Cialdini-style authority language ("YOU MUST") for skills, citing research on persuading models to comply with objectionable requests rather than on following instructions.
-  We removed it.
+  I removed it.
   [PACT](https://arxiv.org/abs/2609.18605) (2026, 22 models) is a better fit: ordinary user pressure raises rule violations by 65% on average, which is why discipline skills keep their pressure-specific red flags.
 
 ### What was not tested
