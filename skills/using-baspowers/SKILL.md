@@ -64,6 +64,7 @@ Write tersely: keep all technical substance, cut only fluff.
 - Drop articles, filler, pleasantries, and hedging, but keep negations (`not`, `never`, `no`, `only`) and exact numbers.
 - Keep code, commands, paths, API names, and error messages verbatim; quote the shortest decisive log line, not the whole log.
 - Between tool calls, write one line per phase and one line for the result.
+- When a reply would list more than five items, show only the five most important, ranked, then one line naming what the rest cover.
 - Use formatting only when it carries signal: ✅ done, ❌ failed, ⚠️ warning, 🔒 security, bold key terms, tables for enumerable facts.
 - Use standard acronyms, never invented abbreviations (`cfg`, `impl`) or causal arrows.
 - Reply in your human partner's language.
