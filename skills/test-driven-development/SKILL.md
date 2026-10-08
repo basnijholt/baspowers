@@ -243,7 +243,7 @@ When writing or changing any test, read [writing-good-tests.md](writing-good-tes
 
 - Code before test
 - Test after implementation
-- Test passes immediately
+- Test passes immediately because the code already existed (no code yet? that is Verify RED: fix the test)
 - Can't explain why test failed
 - Tests added "later"
 - Rationalizing "just this once"
