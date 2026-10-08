@@ -102,8 +102,8 @@ gate. Continue unless one of the authority boundaries above applies.
 
 ## Checklist
 
-Classify first, announce the path, then create a task for each item on
-your path and complete them in order.
+Classify first (state the path when it helps, as above), then create a task
+for each item on your path and complete them in order.
 
 **Spike:**
 1. **Explore project context** — enough to frame the probe
