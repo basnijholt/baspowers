@@ -32,32 +32,32 @@ Every upstream skill is renamed from superpowers to baspowers; that rename alone
 | `reporting-status` | Open items only, with how far each got |
 | `triaging-pr-backlogs` | Close what is provably redundant, merge what passes review, report the rest |
 
-### Modified from Superpowers (11)
+### Modified from Superpowers (14)
 
 | Skill | What it does | What changed |
 |---|---|---|
 | `using-baspowers` | Bootstrap: pick the skills that apply at the start of each task | Loads skills once per task instead of before every response; agent decides routine, reversible work itself; adds a terse response style adapted from [caveman](https://github.com/JuliusBrussee/caveman), with a five-item list cap from [i-have-adhd](https://github.com/ayghri/i-have-adhd) |
 | `brainstorming` | Turn an idea into a checked design before building | No approval gates (agent presents the design and proceeds); keeps v6.4.2, not the unreleased `dev` rebuild |
-| `writing-plans` | Write a step-by-step implementation plan from a spec | Agent picks the execution mode instead of asking |
+| `writing-plans` | Write a step-by-step implementation plan from a spec | Agent picks the execution mode instead of asking and records it in the plan |
 | `executing-plans` | Execute a plan yourself in this session, with one final review | Creates an isolated branch instead of asking for consent |
-| `subagent-driven-development` | Execute a plan task by task with fresh subagents and reviews | Creates an isolated branch instead of asking for consent |
+| `subagent-driven-development` | Execute a plan task by task with fresh subagents and reviews | Creates an isolated branch instead of asking for consent; controller rules on plan-mandated findings |
 | `test-driven-development` | Write a failing test first, then the code | Agent decides the named exceptions instead of asking |
-| `systematic-debugging` | Find the root cause before proposing a fix | After three failed fixes, consults another model instead of asking |
+| `systematic-debugging` | Find the root cause before proposing a fix | Consults another model instead of asking for help, including after three failed fixes |
+| `requesting-code-review` | Get a review before merging | Reviews the whole branch by default; reviewer ends with a `VERDICT:` line |
 | `receiving-code-review` | Verify review feedback instead of blindly applying it | Investigates instead of asking; consults another model when feedback conflicts with a recorded decision |
+| `dispatching-parallel-agents` | Run independent tasks in parallel subagents | Parallel editors in one checkout touch disjoint files and leave git state alone |
 | `using-git-worktrees` | Isolate feature work in a git worktree | Rewritten: 1063 to 354 words; reuses a worktree only if it is fresh |
-| `finishing-a-development-branch` | Decide how to merge, PR, or clean up finished work | Follows the requested outcome instead of presenting an options menu |
+| `finishing-a-development-branch` | Decide how to merge, PR, or clean up finished work | Follows the requested outcome instead of an options menu; creates a branch on detached HEAD; cleans up only its own worktrees; never switches your main checkout |
+| `writing-skills` | Create, edit, and test skills | Quick-reference and red-flag sections only when testing shows a need; guidance for trimming existing skills |
 | `diagnosing-baspowers` | Diagnose from transcripts why a session went wrong | Was `diagnosing-superpowers`. GitHub issue step removed |
 
-### Copied from Superpowers (4)
+### Copied from Superpowers (1)
 
 Identical to upstream apart from the rename.
 
 | Skill | What it does |
 |---|---|
-| `dispatching-parallel-agents` | Run independent tasks in parallel subagents |
 | `verification-before-completion` | Run the checks before claiming anything works |
-| `requesting-code-review` | Get a review before merging |
-| `writing-skills` | Create, edit, and test skills |
 
 ### Adapted from other projects (1)
 
