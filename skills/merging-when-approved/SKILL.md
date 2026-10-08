@@ -9,7 +9,7 @@ An approval belongs to one head SHA and one reviewer who did not write the code.
 If you wrote or changed any commit in the PR, your own read is not a review, and neither is CI.
 
 1. Pin the head: `HEAD_SHA=$(gh pr view <N> --json headRefOid -q .headRefOid)`.
-2. In parallel, dispatch a fresh-context subagent (baspowers:requesting-code-review) and the opposite model family via baspowers:consulting-cross-model, with a longer timeout.
+2. In parallel, dispatch a fresh-context subagent (baspowers:requesting-code-review) and the opposite model family via baspowers:consulting-cross-model in review mode.
    Tell both: review the full diff at HEAD_SHA, report only real defects with file:line and a failing scenario, report over-engineering and scope creep, edit nothing, end with `VERDICT: APPROVE` or `VERDICT: CHANGES REQUIRED`.
 3. Validate findings (baspowers:receiving-code-review), fix valid ones minimally, decline scope creep with a reason on the PR.
 4. Any push is a new head: go back to step 1.
