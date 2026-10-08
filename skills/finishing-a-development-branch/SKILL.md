@@ -152,8 +152,11 @@ Step 2, from before that directory change.
 
 **If `GIT_DIR == GIT_COMMON`:** Normal repo, no worktree to clean up. Done.
 
-**If `WORKTREE_PATH` is under `.worktrees/` or `worktrees/`:** Baspowers
-created this worktree — we own cleanup:
+**If `WORKTREE_PATH` is inside `$MAIN_ROOT/.worktrees/`, `$MAIN_ROOT/worktrees/`,
+or the worktree directory your instructions name:** Baspowers created this
+worktree — we own cleanup. Match against those exact directories, not any
+path containing `worktrees`: harness-managed worktrees such as
+`~/.t3/worktrees/...` or `~/.codex/worktrees/...` belong to the host.
 
 ```bash
 git worktree remove "$WORKTREE_PATH"
@@ -181,7 +184,7 @@ deleted.
 Carry out a later explicit instruction, then remove the worktree.
 
 **Otherwise:** The host environment owns this workspace — leave it in
-place. If your platform provides a workspace-exit tool, use it.
+place.
 
 ## Quick Reference
 
@@ -201,7 +204,7 @@ place. If your platform provides a workspace-exit tool, use it.
 | "They seem done with this feature — I'll offer to discard it" | Discard happens only when your human partner asks for it in so many words. |
 | "'Yeah, get rid of it' counts as confirmation" | Only the typed word `discard` authorizes deletion. |
 | "The PR is up, so the worktree is clutter now" | PR feedback gets fixed in that worktree. It stays until the work lands. |
-| "This other worktree looks stale — I'll clean it too" | Clean up only worktrees under `.worktrees/` or `worktrees/`. Everything else belongs to the host. |
+| "This other worktree looks stale — I'll clean it too" | Clean up only worktrees inside `$MAIN_ROOT/.worktrees/`, `$MAIN_ROOT/worktrees/`, or the directory your instructions name. Everything else belongs to the host. |
 | "Removal refused — `--force` is just finishing the cleanup" | The refusal means files exist only in that worktree. `--force` destroys them permanently. Preserve the worktree and report. |
 | "The merged-result failure is probably flaky" | A failing merged result stops everything. Branch and worktree stay put while you investigate. |
 | "The base branch is obviously main" | Derive the fork point and compare it with upstream/default branch evidence. Stop if they disagree. |
