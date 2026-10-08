@@ -20,6 +20,7 @@ See [Skills](#skills) for what is original, modified, copied, or adapted.
 
 Upstream is [obra/superpowers](https://github.com/obra/superpowers) v6.4.2 plus later bug fixes from its `dev` branch.
 Every upstream skill is renamed from superpowers to baspowers; that rename alone does not count as a change.
+`SKILL.md` size compares word counts with upstream v6.4.2; supporting files are not counted, and the skill body is what loads each time a skill triggers.
 
 ### Original to Baspowers (6)
 
@@ -34,30 +35,30 @@ Every upstream skill is renamed from superpowers to baspowers; that rename alone
 
 ### Modified from Superpowers (14)
 
-| Skill | What it does | What changed |
-|---|---|---|
-| `using-baspowers` | Bootstrap: pick the skills that apply at the start of each task | Loads skills once per task instead of before every response; agent decides routine, reversible work itself; adds a terse response style adapted from [caveman](https://github.com/JuliusBrussee/caveman), with a five-item list cap from [i-have-adhd](https://github.com/ayghri/i-have-adhd) |
-| `brainstorming` | Turn an idea into a checked design before building | No approval gates (agent presents the design and proceeds); keeps v6.4.2, not the unreleased `dev` rebuild |
-| `writing-plans` | Write a step-by-step implementation plan from a spec | Agent picks the execution mode instead of asking and records it in the plan |
-| `executing-plans` | Execute a plan yourself in this session, with one final review | Creates an isolated branch instead of asking for consent |
-| `subagent-driven-development` | Execute a plan task by task with fresh subagents and reviews | Creates an isolated branch instead of asking for consent; controller rules on plan-mandated findings |
-| `test-driven-development` | Write a failing test first, then the code | Agent decides the named exceptions instead of asking |
-| `systematic-debugging` | Find the root cause before proposing a fix | Consults another model instead of asking for help, including after three failed fixes |
-| `requesting-code-review` | Get a review before merging | Reviews the whole branch by default; reviewer ends with a `VERDICT:` line |
-| `receiving-code-review` | Verify review feedback instead of blindly applying it | Investigates instead of asking; consults another model when feedback conflicts with a recorded decision |
-| `dispatching-parallel-agents` | Run independent tasks in parallel subagents | Parallel editors in one checkout touch disjoint files and leave git state alone |
-| `using-git-worktrees` | Isolate feature work in a git worktree | Rewritten: 1063 to 354 words; reuses a worktree only if it is fresh |
-| `finishing-a-development-branch` | Decide how to merge, PR, or clean up finished work | Follows the requested outcome instead of an options menu; creates a branch on detached HEAD; cleans up only its own worktrees; never switches your main checkout |
-| `writing-skills` | Create, edit, and test skills | Quick-reference and red-flag sections only when testing shows a need; guidance for trimming existing skills |
-| `diagnosing-baspowers` | Diagnose from transcripts why a session went wrong | Was `diagnosing-superpowers`. GitHub issue step removed |
+| Skill | What it does | What changed | `SKILL.md` size |
+|---|---|---|---|
+| `using-baspowers` | Bootstrap: pick the skills that apply at the start of each task | Loads skills once per task instead of before every response; agent decides routine, reversible work itself; adds a terse response style adapted from [caveman](https://github.com/JuliusBrussee/caveman), with a five-item list cap from [i-have-adhd](https://github.com/ayghri/i-have-adhd) | +83% (492 → 901) |
+| `brainstorming` | Turn an idea into a checked design before building | No approval gates (agent presents the design and proceeds); keeps v6.4.2, not the unreleased `dev` rebuild | -12% (2613 → 2287) |
+| `writing-plans` | Write a step-by-step implementation plan from a spec | Agent picks the execution mode instead of asking and records it in the plan | -3% (1639 → 1593) |
+| `executing-plans` | Execute a plan yourself in this session, with one final review | Creates an isolated branch instead of asking for consent | 0% (3267 → 3274) |
+| `subagent-driven-development` | Execute a plan task by task with fresh subagents and reviews | Creates an isolated branch instead of asking for consent; controller rules on plan-mandated findings | +2% (4871 → 4980) |
+| `test-driven-development` | Write a failing test first, then the code | Agent decides the named exceptions instead of asking | +7% (1475 → 1583) |
+| `systematic-debugging` | Find the root cause before proposing a fix | Consults another model instead of asking for help, including after three failed fixes | +4% (1440 → 1499) |
+| `requesting-code-review` | Get a review before merging | Reviews the whole branch by default; reviewer ends with a `VERDICT:` line | +3% (424 → 438) |
+| `receiving-code-review` | Verify review feedback instead of blindly applying it | Investigates instead of asking; consults another model when feedback conflicts with a recorded decision | +6% (913 → 972) |
+| `dispatching-parallel-agents` | Run independent tasks in parallel subagents | Parallel editors in one checkout touch disjoint files and leave git state alone | +5% (865 → 905) |
+| `using-git-worktrees` | Isolate feature work in a git worktree | Rewritten; reuses a worktree only if it is fresh | -67% (1069 → 354) |
+| `finishing-a-development-branch` | Decide how to merge, PR, or clean up finished work | Follows the requested outcome instead of an options menu; creates a branch on detached HEAD; cleans up only its own worktrees; never switches your main checkout | +4% (1269 → 1322) |
+| `writing-skills` | Create, edit, and test skills | Quick-reference and red-flag sections only when testing shows a need; guidance for trimming existing skills | +1% (3814 → 3863) |
+| `diagnosing-baspowers` | Diagnose from transcripts why a session went wrong | Was `diagnosing-superpowers`. GitHub issue step removed | -8% (1065 → 977) |
 
 ### Copied from Superpowers (1)
 
 Identical to upstream apart from the rename.
 
-| Skill | What it does |
-|---|---|
-| `verification-before-completion` | Run the checks before claiming anything works |
+| Skill | What it does | `SKILL.md` size |
+|---|---|---|
+| `verification-before-completion` | Run the checks before claiming anything works | 0% (580 → 580) |
 
 ### Adapted from other projects (1)
 
