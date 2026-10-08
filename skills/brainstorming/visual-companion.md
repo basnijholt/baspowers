@@ -33,8 +33,8 @@ The server watches a directory for HTML files and serves the newest one to the b
 ## Starting a Session
 
 ```bash
-# Start AFTER the user approves the companion. --open auto-opens their browser on
-# the first screen; --project-dir persists mockups and enables same-port restart.
+# Start it when a question is clearer shown than told; no approval needed.
+# --open auto-opens their browser on the first screen; --project-dir persists mockups and enables same-port restart.
 bash scripts/start-server.sh --project-dir /path/to/project --open
 
 # Returns: {"type":"server-started","port":52341,
