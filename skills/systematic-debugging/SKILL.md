@@ -162,8 +162,8 @@ You MUST complete each phase before proceeding to the next.
 4. **When You Don't Know**
    - Say "I don't understand X"
    - Don't pretend to know
-   - Ask for help
-   - Research more
+   - Research more: instrument, read the code, check history
+   - If two defensible explanations remain, use baspowers:consulting-cross-model
 
 ### Phase 4: Implementation
 
@@ -193,7 +193,7 @@ You MUST complete each phase before proceeding to the next.
    - Count: How many fixes have you tried?
    - If < 3: Return to Phase 1, re-analyze with new information
    - **If ≥ 3: STOP and question the architecture (step 5 below)**
-   - DON'T attempt Fix #4 without architectural discussion
+   - DON'T attempt Fix #4 without the architecture check in step 5
 
 5. **If 3+ Fixes Failed: Question Architecture**
 
@@ -231,7 +231,7 @@ If you catch yourself thinking:
 
 **ALL of these mean: STOP. Return to Phase 1.**
 
-**If 3+ fixes failed:** Question the architecture (see Phase 4.5)
+**If 3+ fixes failed:** Question the architecture (see Phase 4, step 5)
 
 ## your human partner's Signals You're Doing It Wrong
 
