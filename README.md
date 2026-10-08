@@ -3,18 +3,35 @@
 </h1>
 
 My set of composable skills for coding agents, plus the bootstrap that makes the agent use them.
-It started as a fork of [obra/superpowers](https://github.com/obra/superpowers) and has grown well beyond it:
+It started as a fork of [obra/superpowers](https://github.com/obra/superpowers) and has grown well beyond it.
 
-- most upstream skills are modified to let the agent decide routine work itself, and some are rewritten;
+- `skills/` — the skills
+- `hooks/` — Claude Code `SessionStart` hook that injects `using-baspowers`
+- `.claude-plugin/`, `.codex-plugin/`, `.agents/plugins/` — plugin and local marketplace manifests for Claude Code and Codex
+
+## What's different from Superpowers
+
+1. **The agent decides.**
+   Superpowers stops for your approval at each stage: the design, the spec, the plan, the execution mode, and the finish.
+   Baspowers lets the agent make routine, reversible decisions itself, say what it decided, and keep going.
+   It stops only for information it cannot find, a real change of scope, or an irreversible or external action such as a merge or a push.
+2. **Ambiguity goes to a second model, not to you.**
+   When a hard technical decision stays ambiguous after the agent has read the code, tests, and history, it asks the other model family for advice (Claude asks GPT-6 Astra, Codex asks Claude Opus 5.5), then decides.
+   The same second model also reviews pull requests before they are merged.
+3. **Cruft removed.**
+   Integrations for harnesses I don't use (Cursor, Gemini, OpenCode, Pi, Hermes, and others), development leftovers, and duplicated docs are gone, and skills load once per task instead of before every reply.
+4. **No contradictions.**
+   Every skill was audited so that it agrees with itself and with the other skills; GPT-6 in particular stalls on conflicting skill instructions.
+5. **Aligned with current prompting guides, and tested.**
+   Changes are checked against the latest prompting guides from Anthropic (Claude Opus 5.5) and OpenAI (GPT-6), and the riskier ones are A/B tested on Claude Opus, Claude Haiku, GPT-6 Sol, and GPT-6 Luna (see [Methodology](#methodology)).
+
+It also adds:
+
 - original skills, most of them mined from my own agent history and A/B tested (see [how they were made](#how-the-delivery-skills-were-made));
 - a terse response style adapted from [caveman](https://github.com/JuliusBrussee/caveman) and [i-have-adhd](https://github.com/ayghri/i-have-adhd), built into the bootstrap;
 - a `/wait-what` command from [mattpocock/skills](https://github.com/mattpocock/skills) for replies that did not land.
 
 See [Skills](#skills) for what is original, modified, copied, or adapted.
-
-- `skills/` — the skills
-- `hooks/` — Claude Code `SessionStart` hook that injects `using-baspowers`
-- `.claude-plugin/`, `.codex-plugin/`, `.agents/plugins/` — plugin and local marketplace manifests for Claude Code and Codex
 
 ## Skills
 
