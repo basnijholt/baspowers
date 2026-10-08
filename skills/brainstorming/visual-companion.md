@@ -247,7 +247,7 @@ When the user clicks options in the browser, their interactions are recorded to 
 {"type":"click","choice":"b","text":"Option B - Hybrid","timestamp":1706000115}
 ```
 
-The full event stream shows the user's exploration path — they may click multiple options before settling. The last `choice` event is typically the final selection, but the pattern of clicks can reveal hesitation or preferences worth asking about.
+The full event stream shows the user's exploration path — they may click multiple options before settling. The last `click` event is typically the final selection, but the pattern of clicks can reveal hesitation or preferences worth asking about.
 
 If `$STATE_DIR/events` doesn't exist, the user didn't interact with the browser — use only their terminal text.
 
@@ -270,7 +270,7 @@ If `$STATE_DIR/events` doesn't exist, the user didn't interact with the browser 
 ## Cleaning Up
 
 ```bash
-bash scripts/stop-server.sh $SESSION_DIR
+bash scripts/stop-server.sh "$(dirname "$STATE_DIR")"   # the session directory
 ```
 
 If the session used `--project-dir`, mockup files persist in `.baspowers/brainstorm/` for later reference. Only `/tmp` sessions get deleted on stop.
