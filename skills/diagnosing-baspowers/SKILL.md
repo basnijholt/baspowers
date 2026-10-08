@@ -8,9 +8,9 @@ description: Use when a baspowers session went wrong and your human partner want
 ## Overview
 
 Pin down with your human partner what went wrong in a session, read the
-transcripts on disk, and report what happened with evidence. You report;
-you do not diagnose baspowers. Whoever triages the report
-decides whether baspowers changes.
+transcripts on disk, and report what happened with evidence. Where
+baspowers skill text contributed, quote it and propose a change: your
+human partner maintains these skills and decides what changes.
 
 **Core principle:** Every finding cites `path:line`. No citation, no
 finding. Every number comes from the transcript or from a command you ran,
@@ -73,10 +73,10 @@ yourself in step 3 and which findings to lead with in the verdict.
 - **Human prompts only.** Hook output, system reminders, and tool results
   are not your partner's words. In a subagent transcript, "user" is the
   parent agent.
-- **No baspowers diagnosis.** Report §7 states involvement and stops.
-  Never name a defect in a skill or propose a change. Your partner
-  pressing for a fix does not waive this; point at report §7. No advice
-  to your partner either.
+- **Propose, don't edit.** Report §7 names the skill text involved, with
+  `path:line` in the skill and in the transcript, and proposes a change.
+  Never edit a skill during diagnosis; changing it is a separate task your
+  partner starts.
 - **Intake before analysis.** Nothing in steps 2–5 starts until your
   partner has answered. If they are away, write the questions and stop.
   A statement you reconstructed for them is not an answer. An
@@ -91,5 +91,5 @@ yourself in step 3 and which findings to lead with in the verdict.
 | "The problem is obvious, skip intake" | The problem statement scopes everything. Ask. |
 | "They're away, so I'll reconstruct the statement" | You cannot reconstruct what they wanted. Write the questions and stop. |
 | "I'll sweep everything now and ask at the end" | An unscoped sweep spends their budget on the wrong question. Ask first. |
-| "Small, targeted edit, no restructuring needed" | Not your call, however small. Report the evidence; the triager decides. |
+| "Small, targeted edit, I'll just fix the skill now" | Propose it in report §7. Editing the skill is a separate task your partner starts. |
 | "The price per token is well known" | Numbers you did not compute from the transcript are invented. Cite or drop. |
