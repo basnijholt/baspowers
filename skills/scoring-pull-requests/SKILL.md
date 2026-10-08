@@ -1,9 +1,9 @@
 ---
-name: assessing-pull-requests
+name: scoring-pull-requests
 description: Use when asked whether a pull request or change is good, clean, big, risky, over-engineered, or worth merging
 ---
 
-# Assessing Pull Requests
+# Scoring Pull Requests
 
 Answer in under 200 words: a verdict line (merge / merge after X / don't merge, one reason), then this table.
 Size is net production LOC from `git diff --numstat`; tests and docs are not a cost.

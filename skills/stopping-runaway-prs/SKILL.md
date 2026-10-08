@@ -1,9 +1,9 @@
 ---
-name: auditing-change-growth
+name: stopping-runaway-prs
 description: Use when a pull request has grown well past its estimate, review rounds keep finding new defects, fixes keep spawning more fixes, or a change that claims to simplify code adds code
 ---
 
-# Auditing Change Growth
+# Stopping Runaway PRs
 
 Growth and recurring review findings are design signals.
 When net production LOC exceeds twice the estimate, a third review round finds new defects, or a "simplification" adds code, audit before writing any fix:

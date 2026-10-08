@@ -16,10 +16,10 @@ Every upstream skill is renamed from superpowers to baspowers; that rename alone
 | Skill | What it does |
 |---|---|
 | `consulting-cross-model` | Ask another model about an ambiguous, costly decision |
-| `merging-after-independent-review` | Merge only after independent reviewers approve the exact head |
-| `assessing-pull-requests` | Verdict-first scorecard: net production LOC, root cause or bandage, risk |
-| `auditing-change-growth` | Stop and re-plan when a change outgrows its estimate or reviews keep finding defects |
-| `deploying-in-stages` | One deployment PR, staging first, production in a quiet window |
+| `merging-when-approved` | Merge only after independent reviewers approve the exact head |
+| `scoring-pull-requests` | Verdict-first scorecard: net production LOC, root cause or bandage, risk |
+| `stopping-runaway-prs` | Stop and re-plan when a change outgrows its estimate or reviews keep finding defects |
+| `rolling-out-releases` | One deployment PR, staging first, production in a quiet window |
 | `reporting-status` | Open items only, with how far each got |
 | `triaging-pr-backlogs` | Close what is provably redundant, merge what passes review, report the rest |
 

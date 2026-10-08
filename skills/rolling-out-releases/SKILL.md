@@ -1,9 +1,9 @@
 ---
-name: deploying-in-stages
+name: rolling-out-releases
 description: Use when a merged change or new release must reach a deployed environment, including bumping a version pin, image tag, or config bundle in a deployment repository
 ---
 
-# Deploying in Stages
+# Rolling Out Releases
 
 1. Update the open deployment PR that already moves this component's version, even if it pins an old version; never leave two open PRs moving one pin.
    If you cannot push to it, open a replacement and close the old one with a link.

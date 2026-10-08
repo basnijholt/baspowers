@@ -11,7 +11,7 @@ description: Use when asked to clean up, triage, or prune a backlog of open pull
 |---|---|---|
 | Superseded, duplicate, or already fixed | The merged PR, commit, or code that contains it | Close with a comment linking it |
 | Abandoned bot or agent PR | Weeks idle, nothing beyond main | Close with a one-line reason |
-| Small or dependency bump, green | CI green, no conflicts, not a major bump | Merge via baspowers:merging-after-independent-review |
+| Small or dependency bump, green | CI green, no conflicts, not a major bump | Merge via baspowers:merging-when-approved |
 | External contributor, active | Recent activity | Comment with status; never close |
 | External contributor, stale | No response for months | Close with thanks |
 | Large or maintainer-owned | Any | Report only |

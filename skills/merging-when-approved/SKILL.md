@@ -1,9 +1,9 @@
 ---
-name: merging-after-independent-review
+name: merging-when-approved
 description: Use when asked to review a pull request and merge it only if approved, or before merging a pull request you wrote or changed
 ---
 
-# Merging After Independent Review
+# Merging When Approved
 
 An approval belongs to one head SHA and one reviewer who did not write the code.
 If you wrote or changed any commit in the PR, your own read is not a review, and neither is CI.
@@ -16,7 +16,7 @@ If you wrote or changed any commit in the PR, your own read is not a review, and
 5. Merge only when every reviewer approved the current head: `gh pr merge <N> --squash --match-head-commit "$HEAD_SHA"`, never `--admin`.
 6. Report each verdict with its SHA, and the findings fixed and declined.
 
-After three rounds with new defects, use baspowers:auditing-change-growth.
+After three rounds with new defects, use baspowers:stopping-runaway-prs.
 
 ## Red Flags
 
