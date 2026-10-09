@@ -40,7 +40,7 @@ Upstream is [obra/superpowers](https://github.com/obra/superpowers) v6.4.2 plus 
 Every upstream skill is renamed from superpowers to baspowers; that rename alone does not count as a change.
 `SKILL.md` size compares word counts with upstream v6.4.2; supporting files are not counted, and the skill body is what loads each time a skill triggers.
 
-### Original to Baspowers (6)
+### Original to Baspowers (7)
 
 | Skill | What it does |
 |---|---|
@@ -50,6 +50,7 @@ Every upstream skill is renamed from superpowers to baspowers; that rename alone
 | `stopping-runaway-prs` | Stop and re-plan when a change outgrows its estimate or reviews keep finding defects |
 | `reporting-status` | Open items only, with how far each got |
 | `triaging-pr-backlogs` | Close what is provably redundant, merge what passes review, report the rest |
+| `avoiding-shell-traps` | Wait for, find, and stop processes, pass file lists, and commit after hooks without silent failures |
 
 ### Modified from Superpowers (14)
 
