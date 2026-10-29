@@ -1,6 +1,6 @@
 ---
 name: stopping-runaway-prs
-description: Use when a pull request has grown well past its estimate, review rounds keep finding new defects, fixes keep spawning more fixes, or a change that claims to simplify code adds code
+description: Use when a pull request has grown well past its estimate, review rounds keep finding new defects, fixes keep spawning more fixes, a change that claims to simplify code adds code, or your human partner asks why a pull request is so large or needs so many review rounds
 ---
 
 # Stopping Runaway PRs
