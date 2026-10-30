@@ -179,7 +179,7 @@ The clustering cost is an estimate because its input and output split was not lo
 I ran everything on existing subscriptions.
 
 `scanning-for-simplifications` comes from running a nine-PR refactor program, not from mined history.
-It was A/B tested only on planning tasks: agents wrote the plan for a cleanup scan and for a scan that feeds parallel refactor PRs, without and with the skill, on GPT-6 Luna, GPT-6 Astra and Claude Haiku.
+It was A/B tested only on planning tasks: agents wrote the plan for a cleanup scan and for a scan that feeds parallel refactor PRs, without and with the skill, on GPT-6 Luna (2 runs per arm), GPT-6 Astra and Claude Haiku (1 run each); wording fixes after review were retested on Luna and Astra.
 Without it, no cleanup plan mutation-checked rewritten code, and no program plan said when a main merge needs a new review or when a session counts as idle; with it, every plan did.
 It has not been tested on an executed scan.
 
