@@ -115,7 +115,6 @@ How the upstream skills were changed, and the evidence behind each decision.
 | "YOU MUST / NEVER / NO EXCEPTIONS" vs calm wording with reasons | `test-driven-development`: a bug fix under time pressure, plus a README-only change; 144 runs on all four models | Test written and seen failing first: no skill 0/32, emphatic 32/32, calm 32/32. No version invented tests for the README change (0/48). | No rewrite of existing skills; new skills use calm wording |
 | Why does Claude skip brainstorming on some feature requests? | Opus, fully specified vs vague vs larger requests | Fully specified small change: 0/8 (goes straight to TDD). Vague or larger: 8/8. | Left as is: it brainstorms when there is something to design |
 | Blanket trim of 13 skills for length | Wording-only rewrites, checked by an independent old-vs-new comparison | The text checks passed, but lists were folded into prose and comma-separated lines | Withdrawn before merging |
-| Does `scanning-for-simplifications` close the gaps in planning a simplification pass? | Two planning tasks outside any repository: a cleanup scan of an approved 43-file PR, and a scan of a 370k-line codebase that feeds parallel refactor PRs; no skill vs skill on GPT-6 Luna (2 runs), GPT-6 Astra and Claude Haiku (1 run each) per arm, then 3 Luna runs after each wording fix | Cleanup plans with a mutation check of rewritten code: 0/4 without, 4/4 with; a scanner brief anchored on the review history and capped at three proposals: 1/4 without, 0/4 with. Program plans with a rule for when a main-merge resolution needs re-review, a definition of an idle session, and a cleanup scan before ready: 0/4 without, 4/4 with. Final wording on Luna: merge rule, idle definition and cleanup scan 3/3, the better-and-simpler verdict 2/3 | Added; three sentences that runs misread or dropped were restructured and retested |
 
 ### Vendor guidance and research applied
 
@@ -178,6 +177,11 @@ That is about 8M tokens, or roughly $12 at API list prices, not counting the ses
 Luna is priced at $0.10 per 1M input and $0.50 per 1M output tokens, with 90% off cached input ([Artificial Analysis](https://artificialanalysis.ai/models/releases/gpt-6-luna)).
 The clustering cost is an estimate because its input and output split was not logged.
 I ran everything on existing subscriptions.
+
+`scanning-for-simplifications` comes from running a nine-PR refactor program, not from mined history.
+It was A/B tested only on planning tasks: agents wrote the plan for a cleanup scan and for a scan that feeds parallel refactor PRs, without and with the skill, on GPT-6 Luna, GPT-6 Astra and Claude Haiku.
+Without it, no cleanup plan mutation-checked rewritten code, and no program plan said when a main merge needs a new review or when a session counts as idle; with it, every plan did.
+It has not been tested on an executed scan.
 
 ## Install
 

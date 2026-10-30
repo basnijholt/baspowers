@@ -1,17 +1,18 @@
 # Scanner brief
 
-Copy this brief, fill in the braces, and send it unchanged to every scanner.
-The slice scanners get a file list as `{SCOPE}`; the duplication pair gets "the whole diff: look only for logic duplicated across these files or repeating an existing helper elsewhere in the repository".
+Copy this brief, fill in the braces, append only the project's must-stay-unchanged rules to its behavior line, and send it to every scanner.
+Slice scanners get their file list as `{SCOPE}`.
+The duplication pair gets "the whole diff from {BASE} to {HEAD}: look only for logic duplicated across the changed files, or repeating an existing helper elsewhere in the repository".
 
 ```text
 Find simplifications in one pull request that keep its behavior identical.
 
-Inputs, read-only: the repository snapshot at {SNAPSHOT}, commit {HEAD}; the pull request's merge base is {BASE} (`git -C {SNAPSHOT} diff {BASE} {HEAD} -- <path>` shows one file's changes). Read the project's agent instructions file first.
+Inputs, read-only: the repository snapshot at {SNAPSHOT}, commit {HEAD}. The pull request's merge base is {BASE}; `git -C {SNAPSHOT} diff {BASE} {HEAD} -- <path>` shows one file's changes. Read the project's agent instructions file first.
 
 Scope: {SCOPE}
 Read every file in scope whole, not only its changed hunks, and follow callers and callees anywhere in the repository.
 
-Goal: code that is easier to maintain and understand, and ideally shorter, though shorter is not required; a change may add lines when the result is clearly simpler.
+Goal: code that is easier to maintain and understand. Shorter is welcome but not required.
 
 Behavior stays identical: same return values, side effects and their order, raised errors and messages, log output, persisted data, wire and file formats, user-visible text, configuration, and await or lock points on hot paths.
 
@@ -23,9 +24,9 @@ Look for:
 - defensive checks inside trusted internal code that the types already guarantee;
 - options, flags, or branches nothing sets or reaches;
 - stale names, and comments or docstrings that narrate history or describe old behavior;
-- classes or protocols that a function or a dataclass would replace, and dicts where a dataclass fits;
+- classes or protocols that a plain function or record type would replace, and loosely typed maps where a typed record fits;
 - control flow that flattens;
-- tests that duplicate each other, patch private internals instead of the owning seam, or carry dead fixtures and helpers.
+- tests that duplicate each other, patch private internals instead of the interface callers use, or carry dead fixtures and helpers.
 
 Out of scope: behavior changes, new features or options, hardening, new edge-case handling, performance work, formatting churn, and renames that do not make the code clearer.
 
