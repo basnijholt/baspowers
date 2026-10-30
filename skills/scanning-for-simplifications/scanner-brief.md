@@ -1,8 +1,8 @@
 # Scanner brief
 
 Copy this brief, fill in the braces, append only the project's must-stay-unchanged rules to its behavior line, and send it to every scanner.
-Slice scanners get their file list as `{SCOPE}`.
-The duplication pair gets "the whole diff from {BASE} to {HEAD}: look only for logic duplicated across the changed files, or repeating an existing helper elsewhere in the repository".
+Slice scanners get their file list as `{SCOPE}` and keep the "Look for" list.
+The duplication pair gets "the whole diff from {BASE} to {HEAD}" as `{SCOPE}`, and its "Look for" list becomes a single item: logic duplicated across the changed files, or repeating an existing helper elsewhere in the repository.
 
 ```text
 Find simplifications in one pull request that keep its behavior identical.
