@@ -40,7 +40,7 @@ Upstream is [obra/superpowers](https://github.com/obra/superpowers) v6.4.2 plus 
 Every upstream skill is renamed from superpowers to baspowers; that rename alone does not count as a change.
 `SKILL.md` size compares word counts with upstream v6.4.2; supporting files are not counted, and the skill body is what loads each time a skill triggers.
 
-### Original to Baspowers (6)
+### Original to Baspowers (7)
 
 | Skill | What it does |
 |---|---|
@@ -50,6 +50,7 @@ Every upstream skill is renamed from superpowers to baspowers; that rename alone
 | `stopping-runaway-prs` | Stop and re-plan when a change outgrows its estimate or reviews keep finding defects |
 | `reporting-status` | Open items only, with how far each got |
 | `triaging-pr-backlogs` | Close what is provably redundant, merge what passes review, report the rest |
+| `scanning-for-simplifications` | Cleanup scan of a large PR before it is ready, or an architecture scan that feeds parallel refactor PRs |
 
 ### Modified from Superpowers (14)
 
@@ -114,6 +115,7 @@ How the upstream skills were changed, and the evidence behind each decision.
 | "YOU MUST / NEVER / NO EXCEPTIONS" vs calm wording with reasons | `test-driven-development`: a bug fix under time pressure, plus a README-only change; 144 runs on all four models | Test written and seen failing first: no skill 0/32, emphatic 32/32, calm 32/32. No version invented tests for the README change (0/48). | No rewrite of existing skills; new skills use calm wording |
 | Why does Claude skip brainstorming on some feature requests? | Opus, fully specified vs vague vs larger requests | Fully specified small change: 0/8 (goes straight to TDD). Vague or larger: 8/8. | Left as is: it brainstorms when there is something to design |
 | Blanket trim of 13 skills for length | Wording-only rewrites, checked by an independent old-vs-new comparison | The text checks passed, but lists were folded into prose and comma-separated lines | Withdrawn before merging |
+| Does `scanning-for-simplifications` close the gaps in planning a simplification pass? | Two planning tasks outside any repository: a cleanup scan of an approved 43-file PR, and a scan of a 370k-line codebase that feeds parallel refactor PRs; no skill vs skill on GPT-6 Luna (2 runs), GPT-6 Astra and Claude Haiku (1 run each) per arm, then 3 Luna runs after each wording fix | Cleanup plans with a mutation check of rewritten code: 0/4 without, 4/4 with; a scanner brief anchored on the review history and capped at three proposals: 1/4 without, 0/4 with. Program plans with a rule for when a main-merge resolution needs re-review, a definition of an idle session, and a cleanup scan before ready: 0/4 without, 4/4 with. Final wording on Luna: merge rule, idle definition and cleanup scan 3/3, the better-and-simpler verdict 2/3 | Added; three sentences that runs misread or dropped were restructured and retested |
 
 ### Vendor guidance and research applied
 
