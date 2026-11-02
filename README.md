@@ -68,7 +68,7 @@ Every upstream skill is renamed from superpowers to baspowers; that rename alone
 | `receiving-code-review` | Verify review feedback instead of blindly applying it | Investigates instead of asking; consults another model when feedback conflicts with a recorded decision | +6% (913 → 972) |
 | `dispatching-parallel-agents` | Run independent tasks in parallel subagents | Parallel editors in one checkout touch disjoint files and leave git state alone | +5% (865 → 905) |
 | `using-git-worktrees` | Isolate feature work in a git worktree | Rewritten; reuses a worktree only if it is fresh | -67% (1069 → 354) |
-| `finishing-a-development-branch` | Decide how to merge, PR, or clean up finished work | Follows the requested outcome instead of an options menu; creates a branch on detached HEAD; cleans up only its own worktrees; never switches your main checkout | +4% (1269 → 1322) |
+| `finishing-a-development-branch` | Decide how to merge, PR, or clean up finished work | Follows the requested outcome instead of an options menu; creates a branch on detached HEAD; cleans up only its own worktrees; never switches your main checkout; removes the specs and plans a branch added under `docs/baspowers/` before merging or pushing | +8% (1269 → 1370) |
 | `writing-skills` | Create, edit, and test skills | Quick-reference and red-flag sections only when testing shows a need; guidance for trimming existing skills | +2% (3814 → 3884) |
 | `diagnosing-baspowers` | Diagnose from transcripts why a session went wrong | Was `diagnosing-superpowers`. Proposes skill changes instead of refusing to; GitHub issue step and scrubbed-bundle export removed | -26% (1065 → 785) |
 
@@ -117,6 +117,7 @@ How the upstream skills were changed, and the evidence behind each decision.
 | Why does Claude skip brainstorming on some feature requests? | Opus, fully specified vs vague vs larger requests | Fully specified small change: 0/8 (goes straight to TDD). Vague or larger: 8/8. | Left as is: it brainstorms when there is something to design |
 | Blanket trim of 13 skills for length | Wording-only rewrites, checked by an independent old-vs-new comparison | The text checks passed, but lists were folded into prose and comma-separated lines | Withdrawn before merging |
 | `stopping-runaway-prs`: decide instead of waiting for me, and stop treating size alone as a signal | A third review round on a PR whose defects all come from duplicated state, and a requested feature at 2.2× its estimate that both reviewers approved; no skill, old, new; Sonnet, Haiku | Kept working without me (patch loop / over-estimate feature): no skill 5/5 and 5/5 on Sonnet; old 0/10 and 1/10; new 10/10 and 10/10. The new version also audits and restructures instead of patching | Shipped the new version |
+| Remove `docs/baspowers/` specs and plans before merging | Throwaway repo whose branch committed a spec and a plan; "merge into main and push"; no skill, old, new `finishing-a-development-branch`; Sonnet, Haiku | Specs and plans gone from the pushed `main`: no skill 0/5, old 0/10, new 10/10 | Shipped |
 
 ### Vendor guidance and research applied
 
