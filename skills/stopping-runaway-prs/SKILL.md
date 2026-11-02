@@ -5,19 +5,21 @@ description: Use when a pull request has grown well past its estimate, review ro
 
 # Stopping Runaway PRs
 
-Growth and recurring review findings are design signals.
-When net production LOC exceeds twice the estimate, a third review round finds new defects, or a "simplification" adds code, audit before writing any fix:
+Recurring review findings, bandages, and unrequested scope are design signals; size alone is not.
+Audit before writing any fix when a third review round finds new defects, fixes keep spawning fixes, a fix works around a bug instead of removing its cause, or the diff holds work nobody asked for.
+When a requested feature needs more code than estimated, or a simplification adds lines but leaves the code clearly simpler, keep going.
 
-1. Measure net production LOC against the estimate (`git diff --numstat <base>...HEAD`, production files only).
+1. Measure net production LOC against the estimate (`git diff --numstat <base>...HEAD`, production files only), and name where the growth came from.
 2. Cluster findings from all rounds; a shared root means the boundary is wrong.
-3. Give options with net LOC each: keep patching, restructure around the root, shrink to the original goal, or restart clean.
-4. Send your human partner the numbers and one recommendation in under 150 words, and wait for the choice before patching.
-   "Fix these and merge" was said before they saw the numbers.
+3. Price the options with net LOC each: keep patching, restructure around the root, shrink to the original goal, or restart clean.
+4. Choose one yourself. If the choice stays ambiguous, use baspowers:consulting-cross-model, then decide.
+5. Carry it out, and tell your human partner the numbers and the choice in under 150 words.
+   Wait for them only when the consult leaves the choice open or the choice adds scope they never asked for.
 
 ## Red Flags
 
 | Thought | Reality |
 |---|---|
 | "Doing the four fixes now, and I'll flag the risk alongside" | Patching first is the next round of the same loop. Audit first. |
-| "Ship it behind a flag for the deadline, redesign after" | That is one option to price in the message, not a decision to make by patching. |
+| "Ship it behind a flag for the deadline, redesign after" | That is one option to price in the audit, not a decision to make by patching. |
 | "If the next round finds more, then we stop" | Every earlier round could have said that. Stop now. |
