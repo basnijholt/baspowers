@@ -72,6 +72,15 @@ completion question.
 
 ## Step 5: Execute Choice
 
+Before merging or pushing, list the specs and plans this branch added:
+
+```bash
+git diff --name-only --diff-filter=A <base-branch>...HEAD -- docs/baspowers
+```
+
+If it lists files, `git rm` them and commit (`chore: remove baspowers specs and plans`).
+They are working notes for the agents, not part of the change.
+
 ### Option 1: Merge Locally
 
 ```bash
