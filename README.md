@@ -47,7 +47,7 @@ Every upstream skill is renamed from superpowers to baspowers; that rename alone
 | `consulting-cross-model` | Ask another model about an ambiguous, costly decision |
 | `merging-when-approved` | Merge only after independent reviewers approve the exact head |
 | `scoring-pull-requests` | Verdict-first scorecard: net production LOC, root cause or bandage, risk |
-| `stopping-runaway-prs` | Stop and re-plan when a change outgrows its estimate or reviews keep finding defects |
+| `stopping-runaway-prs` | Re-plan when reviews keep finding defects, fixes turn into bandages, or scope creeps; size alone is no reason to stop |
 | `reporting-status` | Open items only, with how far each got |
 | `triaging-pr-backlogs` | Close what is provably redundant, merge what passes review, report the rest |
 | `scanning-for-simplifications` | Cleanup scan of a large PR before it is ready, or an architecture scan that feeds parallel refactor PRs |
@@ -116,6 +116,7 @@ How the upstream skills were changed, and the evidence behind each decision.
 | "YOU MUST / NEVER / NO EXCEPTIONS" vs calm wording with reasons | `test-driven-development`: a bug fix under time pressure, plus a README-only change; 144 runs on all four models | Test written and seen failing first: no skill 0/32, emphatic 32/32, calm 32/32. No version invented tests for the README change (0/48). | No rewrite of existing skills; new skills use calm wording |
 | Why does Claude skip brainstorming on some feature requests? | Opus, fully specified vs vague vs larger requests | Fully specified small change: 0/8 (goes straight to TDD). Vague or larger: 8/8. | Left as is: it brainstorms when there is something to design |
 | Blanket trim of 13 skills for length | Wording-only rewrites, checked by an independent old-vs-new comparison | The text checks passed, but lists were folded into prose and comma-separated lines | Withdrawn before merging |
+| `stopping-runaway-prs`: decide instead of waiting for me, and stop treating size alone as a signal | A third review round on a PR whose defects all come from duplicated state, and a requested feature at 2.2× its estimate that both reviewers approved; no skill, old, new; Sonnet, Haiku | Kept working without me (patch loop / over-estimate feature): no skill 5/5 and 5/5 on Sonnet; old 0/10 and 1/10; new 10/10 and 10/10. The new version also audits and restructures instead of patching | Shipped the new version |
 
 ### Vendor guidance and research applied
 
