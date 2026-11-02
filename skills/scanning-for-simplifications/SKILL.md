@@ -13,14 +13,14 @@ Scanners anchored on earlier passes propose cosmetic edits, and unverified propo
 The most productive lens is **two owners of one fact**: state, rules, or logic kept in two places, plus the code that keeps them in step.
 Deriving one from the other deletes the copy and the sync code, and often a bug.
 
-Run other-family scanners, surveyors, refuters, and judges with the CLI that baspowers:consulting-cross-model review mode uses, started from the snapshot, with `timeout 900`, the filled-in brief as the whole prompt, and no consultation limit.
-A timeout, an error, or an empty report means that scope was not scanned: rerun it, narrower if needed.
+Run other-family scanners, surveyors, and refuters with the CLI that baspowers:consulting-cross-model review mode uses, started from the snapshot, with `timeout 900`, the filled-in brief as the whole prompt, and no consultation limit.
+A timeout, an error, or an empty report means that scope was not scanned: rerun it, narrower if needed, and if it fails the same way again, report that scope as not scanned.
 
 **Not for:** bug hunts or performance work.
 
 ## PR mode: cleanup scan before ready
 
-Run it last, once everything else is done; checks that wait on shared resources may run once afterwards, on the post-cleanup head.
+Run it last, once everything else is done; checks that wait on shared resources may run once afterwards, on the final head.
 
 1. **Freeze.** Check out the pushed head in a detached, read-only snapshot outside the live worktree.
 2. **Slice.** Take every file the PR adds or changes, tests included; scanners read each file whole, not as hunks.
@@ -38,16 +38,16 @@ Run it last, once everything else is done; checks that wait on shared resources 
    If none fails, add a test that passes on the pre-cleanup head and fails on the broken rewrite, or drop the rewrite.
    Run the full suite, the required gates, and any benchmark the cleanup's paths fall under.
 7. **Review fresh** with steps 1 to 4 and 6 of baspowers:merging-when-approved, and merge only when asked.
-   The scan runs once: approvals from before it do not count, and fixes from this review need no new scan.
+   The scan runs once: approvals from before it count only if it changed nothing, and fixes from this review need no new scan.
 
 ## Architecture mode: survey, then refactor programs
 
 1. **Survey.** Pin one SHA in a read-only snapshot.
    Run one surveyor per area of about 30k lines, plus one whole-codebase surveyor on the two-owners lens, each with [survey-brief.md](survey-brief.md).
-2. **Refute.** For each shortlisted finding, a fresh agent from the other model family runs the refuter brief in [survey-brief.md](survey-brief.md).
+2. **Refute.** For each finding you might launch, a fresh agent from the other model family runs the refuter brief in [survey-brief.md](survey-brief.md).
    Check each refutation in the code before dropping the finding.
    When a design choice hinges on a cost, measure the real end-to-end path first, not one step of it.
 3. **Select.** Write the ranked list to a file.
    If your human partner asked only for the scan, send the top five with the file's path, and stop.
-   Otherwise select a finding only when it deletes enough to matter, and send real bugs to the bug list instead.
+   Otherwise select a finding only when it deletes enough to matter, and report real bugs to your human partner instead.
 4. **Run** the selected findings as one program with baspowers:orchestrating-pr-programs, one session and pull request per finding.
