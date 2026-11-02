@@ -49,11 +49,5 @@ Run it last, once everything else is done; checks that wait on shared resources 
    When a design choice hinges on a cost, measure the real end-to-end path first, not one step of it.
 3. **Select.** Write the ranked list to a file.
    If your human partner asked only for the scan, send the top five with the file's path, and stop.
-   Otherwise launch a finding only when it deletes enough to matter, and send real bugs to the bug list instead.
-   Build a file-overlap matrix and run at most about 4 sessions at once, each in its own worktree and on disjoint files, cross-cutting changes first and one hot-path change at a time.
-4. **Brief each session** with [session-brief.md](session-brief.md), including any main-merge rule and any contract break your human partner authorized.
-5. **Merge one at a time**, as your human partner decides, and right before each merge confirm that the head contains current main.
-   Each merge of main into a PR is a new head: follow your human partner's main-merge rule if they set one, and baspowers:merging-when-approved otherwise.
-6. **Monitor.** A session is idle only when its thread is not running, none of its sub-agents runs, and its last message waits on nothing; a between-turns status alone does not mean idle.
-   Cap concurrent full test suites so benchmarks stay valid.
-   Offer a merge only when the session reports `VERDICT: better and simpler` and its judge agrees; otherwise stop that PR and report why.
+   Otherwise select a finding only when it deletes enough to matter, and send real bugs to the bug list instead.
+4. **Run** the selected findings as one program with baspowers:orchestrating-pr-programs, one session and pull request per finding.
