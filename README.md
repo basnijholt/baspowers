@@ -194,11 +194,12 @@ It has not been tested on an executed scan.
 | Rule on a fourth same-class race whose worst effect is one lost usage line | 0/5 declined it; all proposed a redesign | 5/5 declined it |
 | Write a fix session's ready gate | 0/5 ran the cleanup scan once between two approval rounds; 4 rescanned after every push, 1 scanned before any review | 5/5 |
 | Ask the owner two decisions | 0/5 gave a confidence with the recommendation | 5/5 |
-| Launch six refactors on disjoint files | 0/3 with the earlier `scanning-for-simplifications` step, which capped a program at about four sessions | 3/3 launched all six |
+| Launch six refactors on disjoint files | 1/1 without any skill; 0/3 with the earlier `scanning-for-simplifications` draft, which capped a program at about four sessions | 3/3 launched all six |
 
-Without any skill, agents already held a merge after the cleanup changed the approved head (5/5), checked sub-agents before calling a session idle (5/5), and started six disjoint fixes at once (1/1), so those got no new rule.
+Without any skill, agents already held a merge after the cleanup changed the approved head (5/5) and checked sub-agents before calling a session idle (5/5 over two variants); the idle rule comes from `scanning-for-simplifications`, and the launch rule replaces its four-session cap.
 A brief for a repeated scan named the earlier scan in 3/3 runs without a skill and in none of 3 with `scanning-for-simplifications`, which already covers it.
-It has not been tested on an executed program or on other models.
+After review, the wording was retested on the follow-up, failure-bar, ready-gate, and launch scenarios.
+It has not been tested on an executed program or on GPT-6.
 
 ## Install
 
