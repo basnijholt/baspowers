@@ -13,10 +13,10 @@ The program ends when every item and every follow-up fix has merged or stopped, 
 ## Launch
 
 1. Before launching, tell your human partner that the program's follow-up fixes will start on their own and that each merge still waits for their decision.
-2. An item owns its files from its start until it merges or stops.
-   Start every item whose files no other unfinished item owns and whose prerequisites have merged; when a prerequisite stops, stop the items that build on it.
+2. Go through the items in any order and start each one whose files no started, unfinished item owns and whose prerequisites have merged.
+   An item owns its files from its start until it merges or stops; when a prerequisite stops, stop the items that build on it.
    Follow-up fix sessions start by the same rule.
-3. Brief each session with [session-brief.md](session-brief.md) and everything its first paragraph lists.
+3. Brief each session with [session-brief.md](session-brief.md) and everything that brief says the session gets.
    When the host cannot run every session that may start, start the next one whenever a slot frees, never in fixed waves.
 4. A session is idle only when its thread is not running, none of its sub-agents runs, and its last message waits on nothing.
 
@@ -32,7 +32,8 @@ The program ends when every item and every follow-up fix has merged or stopped, 
 ## Follow up
 
 9. After a merge, once the session is idle, ask it for everything it left open.
-10. Keep the failures other than security holes that meet the bar in gate 7 of the session brief, and the cheap fixes: about 20 production lines or fewer, low risk, with a gain someone notices.
+10. Leave security holes out; step 7 covers them.
+    Keep the failures that meet the bar in gate 7 of the session brief, and the cheap fixes: about 20 production lines or fewer, low risk, fixing an error that hides its cause, wrong advice in a message or doc, a test that checks less than its name says, or dead code a reader must still understand.
     Decline the rest in a comment on the merged pull request, one line each.
 11. Open one issue with the kept items, linking the merged pull request, or open none; start one fix session for the whole issue as step 2 allows.
 12. When that fix merges, close the issue with a comment that settles each item, then run steps 9 to 11 for the fix.
@@ -47,6 +48,6 @@ The program ends when every item and every follow-up fix has merged or stopped, 
 
 | Thought | Reality |
 |---|---|
-| "Start no other work; scheduling the fixes is the owner's call" | They approved the follow-up fixes with the program; start the fix session as soon as step 2 allows. |
+| "Start no other work; scheduling the fixes is the owner's call" | Step 1 told your human partner that follow-up fixes start on their own; start the fix session as soon as step 2 allows. |
 | "Valid finding, the fourth of one class: stop patching and redesign" | Rule on it with gate 7 of the session brief first: below the bar, decline it; at or above it, baspowers:stopping-runaway-prs decides before any patch. |
 | "Any push voids every gate; restart from the cleanup scan" | Gate 9 of the session brief: one scan, then a review round for each later fix, and live evidence on the final head. |

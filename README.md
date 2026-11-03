@@ -181,8 +181,8 @@ I ran everything on existing subscriptions.
 
 `scanning-for-simplifications` and `orchestrating-pr-programs` come from running refactor and bug-fix programs of parallel pull requests, not from mined history.
 
-`scanning-for-simplifications` was A/B tested only on planning tasks: agents wrote the plan for a cleanup scan and for a scan that feeds parallel refactor PRs, without and with the skill, on GPT-6 Luna (2 runs per arm), GPT-6 Astra and Claude Haiku (1 run each); wording fixes after review were retested on Luna and Astra.
-In the final round, read by hand: all 3 cleanup plans written with it mutation-checked rewritten code, against none of 4 without it; all 3 program plans written with it tracked each session's sub-agents and last message (1 stated the full idle rule), against none of 4 without it; plans with and without it alike asked for a new review after another pull request merged.
+`scanning-for-simplifications` was A/B tested only on planning tasks: agents wrote the plan for a cleanup scan and for a scan that feeds parallel refactor PRs, without and with the skill, on GPT-6 Luna (2 runs per arm), GPT-6 Astra and Claude Haiku (1 run each); wording fixes after review were retested on Luna and Astra; the edits made to it in this pull request were not rerun.
+In the final round, read by hand: all 3 cleanup plans written with it mutation-checked rewritten code, against none of 4 without it; all 3 program plans written with it tracked each session's sub-agents and last message (2 stated the idle rule), against none of 4 without it; plans with and without it alike asked for a new review after another pull request merged.
 The idle rule now lives in `orchestrating-pr-programs`.
 It has not been tested on an executed scan.
 
