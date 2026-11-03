@@ -181,7 +181,7 @@ I ran everything on existing subscriptions.
 
 `scanning-for-simplifications` and `orchestrating-pr-programs` come from running refactor and bug-fix programs of parallel pull requests, not from mined history.
 
-`scanning-for-simplifications` was A/B tested only on planning tasks: agents wrote the plan for a cleanup scan and for a scan that feeds parallel refactor PRs, without and with the skill, on GPT-6 Luna (2 runs per arm), GPT-6 Astra and Claude Haiku (1 run each); wording fixes after review were retested on Luna and Astra; the edits made to it in this pull request were not rerun.
+`scanning-for-simplifications` was A/B tested only on planning tasks: agents wrote the plan for a cleanup scan and for a scan that feeds parallel refactor PRs, without and with the skill, on GPT-6 Luna (2 runs per arm), GPT-6 Astra and Claude Haiku (1 run each); wording fixes after review were retested on Luna and Astra. Its later edits, which moved its program steps to `orchestrating-pr-programs`, were tested through that skill's scenarios below, including one where only `scanning-for-simplifications` is loaded and the agent has to follow its handoff.
 In the final round, read by hand: all 3 cleanup plans written with it mutation-checked rewritten code, against none of 4 without it; all 3 program plans written with it tracked each session's sub-agents and last message (2 stated the idle rule), against none of 4 without it; plans with and without it alike asked for a new review after another pull request merged.
 The idle rule now lives in `orchestrating-pr-programs`.
 It has not been tested on an executed scan.
@@ -195,9 +195,10 @@ The column with the skill is the final wording:
 | Rule on a fourth same-class race whose worst effect is one lost usage line | 0/5 declined it; all proposed a redesign | 5/5 declined it |
 | Write a fix session's ready gate | 0/5 ran the cleanup scan once between two approval rounds; 4 rescanned after every push, 1 scanned before any review | 5/5 |
 | Ask the owner two decisions | 0/5 gave a confidence with the recommendation | 5/5 |
-| Launch six refactors on disjoint files | 2/2 without any skill; 0/3 with the earlier `scanning-for-simplifications` draft, which capped a program at about four sessions | 5/5 launched all six |
+| Launch six refactors on disjoint files | 2/2 without any skill; 0/3 with the earlier `scanning-for-simplifications` draft, which capped a program at about four sessions | 5/5 launched all six; 5/5 also with only `scanning-for-simplifications` loaded, following its handoff |
+| Hold the fix when follow-up issues stop shrinking (3, 2, then 7 items) | 0/3 (all started a fix session at once) | 5/5 |
 
-Without any skill, agents already held a merge after the cleanup changed the approved head (5/5), checked sub-agents before calling a session idle (5/5 over two variants), and launched six disjoint fixes at once (1/1); the idle rule comes from `scanning-for-simplifications`, and the launch rule replaces its four-session cap.
+Without any skill, agents already held a merge after the cleanup changed the approved head (5/5), checked sub-agents before calling a session idle (5/5 over two variants), launched six disjoint fixes at once (1/1), and kept a bug that main already has out of a refactor (3/3); the idle rule comes from an earlier draft of `scanning-for-simplifications`, and the launch rule replaces that draft's four-session cap.
 A brief for a repeated scan named the earlier scan in 3/3 runs without a skill and in none of 3 with `scanning-for-simplifications`, which already covers it.
 It has not been tested on an executed program or on GPT-6.
 
