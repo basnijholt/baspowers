@@ -182,8 +182,8 @@ I ran everything on existing subscriptions.
 `scanning-for-simplifications` and `orchestrating-pr-programs` come from running refactor and bug-fix programs of parallel pull requests, not from mined history.
 
 `scanning-for-simplifications` was A/B tested only on planning tasks: agents wrote the plan for a cleanup scan and for a scan that feeds parallel refactor PRs, without and with the skill, on GPT-6 Luna (2 runs per arm), GPT-6 Astra and Claude Haiku (1 run each); wording fixes after review were retested on Luna and Astra.
-In the final round, counted by keyword, all 3 plans written with it named a mutation check of rewritten code, when a session counts as idle, and when a main merge needs a new review; of the 4 plans written without it, 2 named the mutation check, 1 the idle check, and 1 a new review after merges.
-Those program rules now live in `orchestrating-pr-programs`.
+In the final round, read by hand: all 3 cleanup plans written with it mutation-checked rewritten code, against none of 4 without it; all 3 program plans written with it tracked each session's sub-agents and last message (1 stated the full idle rule), against none of 4 without it; plans with and without it alike asked for a new review after another pull request merged.
+The idle rule now lives in `orchestrating-pr-programs`.
 It has not been tested on an executed scan.
 
 `orchestrating-pr-programs` was A/B tested on Claude Sonnet 5.5, run as Claude Code Plan subagents that load no project or user instructions, with decision and writing scenarios, scored from the actions each agent stated and the text it wrote.
