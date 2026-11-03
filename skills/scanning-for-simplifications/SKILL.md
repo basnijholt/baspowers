@@ -13,8 +13,9 @@ Scanners anchored on earlier passes propose cosmetic edits, and unverified propo
 The most productive lens is **two owners of one fact**: state, rules, or logic kept in two places, plus the code that keeps them in step.
 Deriving one from the other deletes the copy and the sync code, and often a bug.
 
-Run other-family scanners, surveyors, and refuters with the CLI that baspowers:consulting-cross-model review mode uses, started from the snapshot, with `timeout 900`, the filled-in brief as the whole prompt, and no consultation limit.
-A timeout, an error, or an empty report means that scope was not scanned: rerun it, narrower if needed, and if it fails the same way again, report that scope as not scanned.
+Run other-family scanners, surveyors, and refuters with the CLI that baspowers:consulting-cross-model review mode uses, started from the snapshot, with `timeout 900`, the filled-in brief as the whole prompt, kept outside the snapshot, and no consultation limit.
+A timeout, an error, or a report that does not cover its scope means that scope was not scanned: rerun it, narrower if needed.
+The scan is complete only when every scope was scanned, or when your human partner accepts the gap after a scope failed the same way twice.
 
 **Not for:** bug hunts or performance work.
 
