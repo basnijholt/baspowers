@@ -29,7 +29,7 @@ Run it last, once everything else is done; checks that wait on shared resources 
 3. **Brief.** Fill in [scanner-brief.md](scanner-brief.md) and append only the project's own must-stay-unchanged rules to its behavior line.
    Mention no earlier rounds, reviews, or known findings, and set no cap on proposals; deduplicate at triage instead.
 4. **Launch the scanners together.** Per slice, one scanner from each model family on the same slice, plus one pair over the whole diff with the duplication scope from the brief.
-   If the host cannot run them all at once, run them in batches, and wait for every report.
+   If the host cannot run them all at once, start the next one whenever a slot frees, and wait for every report.
 5. **Triage.** If your human partner asked only for findings, report them and stop.
    Otherwise deduplicate, verify each proposal in the code, and accept only those that are clearly simpler with behavior unchanged; give each rejection a one-line reason.
    Bugs go to a separate list: fix test-first the ones the PR introduced, and report the rest.
